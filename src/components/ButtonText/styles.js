@@ -1,16 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    width: max-content;
 
-    padding: 1.2rem 3.2rem;
-
-    border-radius: .5rem;
-
-    background-color: ${({theme}) => theme.COLORS.TOMATO};
+    background-color: transparent;
 
     font-family: 'Poppins', sans-serif;
 
