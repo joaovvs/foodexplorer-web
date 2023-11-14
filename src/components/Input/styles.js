@@ -9,27 +9,45 @@ export const Container = styled.div`
 
     gap: .8rem;
 
+
+
     >label{
         font-size: 1.6rem;
         color: ${({theme}) => theme.COLORS.LIGHT_400};
         background: none;
         line-height: 100%;
     }
+    >div{
+        display: flex;
 
-    input{
-        width: 100%;
         padding: 1.2rem 1.4rem;
-        border: none;
 
-        border-radius: .8rem;
+        align-items: center;
+        gap: 1.4rem;
+
         background: ${({theme}) => theme.COLORS.DARK_900};
 
-        color: ${({theme}) => theme.COLORS.LIGHT_400};
+        border-radius: .8rem;
+
+        svg{
+            color: ${({theme}) => theme.COLORS.LIGHT_400};
+        }
+
+        input{
+            width: 100%;
+            border: none;
+
+            border-radius: .8rem;
+        
+            background: ${({theme}) => theme.COLORS.DARK_900};
+
+            color: ${({theme}) => theme.COLORS.LIGHT_400};
 
 
 
-        &::placeholder{
-            color: ${({theme}) => theme.COLORS.LIGHT_500};
+            &::placeholder{
+                color: ${({theme}) => theme.COLORS.LIGHT_500};
+            }
         }
     }
 
