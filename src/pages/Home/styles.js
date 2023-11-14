@@ -14,14 +14,16 @@ export const Container = styled.div`
 
 `;
 
-export const Content = styled.div`
+export const Content = styled.main`
     grid-area: content;
     overflow-y: scroll;
 
-    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
 
+    gap: 2.4rem;
     
 
-    padding: 4.4rem 1.6rem 46.7rem 3.6rem;
+    padding: 4.4rem 1.6rem 2.4rem 3.6rem;
     
 `;
