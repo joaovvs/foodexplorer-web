@@ -26,16 +26,18 @@ export const Container = styled.div`
             font-weight: 400;
             line-height: 100%;
 
-            width: 2.4rem;
+            width: 2.3rem;
 
             border: none;
             background-color: transparent;
 
             color: ${({theme}) => theme.COLORS.LIGHT_300};
         }
-    }
-    input{
-        background-color: none;
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
 
     svg{

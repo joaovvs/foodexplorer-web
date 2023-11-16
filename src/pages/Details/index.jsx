@@ -9,10 +9,18 @@ import  foodImage from "../../assets/Mask group-10.png"
 import { Tag } from "../../components/Tag";
 
 import { CaretLeft, Receipt } from "@phosphor-icons/react";
+import { useNavigate } from "react-router-dom";
 
 export function Details({food_id, ...rest}){
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
     const [food, setFood] = new useState({});
+
+    const navigate = useNavigate();
+
+    function handleBack(){
+        navigate(-1);
+    }
+
 
     useEffect(()=>{
         setFood({name: "Salada Ravanello"});
@@ -31,7 +39,10 @@ export function Details({food_id, ...rest}){
             <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
             
             <nav>
-                <ButtonText icon={CaretLeft} title="voltar"/>
+                <ButtonText 
+                icon={CaretLeft} 
+                title="voltar"
+                onClick={handleBack}/>
             </nav>
 
             <Main>
@@ -55,7 +66,7 @@ export function Details({food_id, ...rest}){
                     </div>
                 </section>
                 
-                <QuantityPicker quantity="01" title={`pedir - R$ 25,00`} icon={Receipt}/>
+                <QuantityPicker quantity="99" title={`pedir - R$ 25,00`} icon={Receipt}/>
             
             </Main>
             <Footer/>

@@ -7,7 +7,7 @@ export const Container = styled.div`
     position: relative;
     gap: 1.2rem;
 
-    min-width: 21rem;
+    width: fit-content;
 
     align-items: center;
     justify-content: center;

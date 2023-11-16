@@ -8,13 +8,16 @@ import { PencilSimple, Heart} from "@phosphor-icons/react";
 export function Card({name, image, price, ...rest}){
     const navigate = useNavigate();
 
-    function handleEdition(){
+    function handleDetails(){
         navigate("/details");
     }
-   return( <Container {...rest}>
+   return( <Container 
+        {...rest}
+        
+        >
         <ButtonText 
             icon={PencilSimple} 
-            onClick={handleEdition}
+            onClick={handleDetails}
         />
 
         <img src={image} alt= {`Imagem do prato ${name}`} />
