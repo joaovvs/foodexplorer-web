@@ -1,6 +1,5 @@
 import { Container, Menu } from "./styles";
-import { PiReceipt } from "react-icons/pi";
-import { List } from "@phosphor-icons/react";
+import { List, Receipt } from "@phosphor-icons/react";
 import  logo from "../../assets/logo.svg"
 import { ButtonText } from "../ButtonText";
 
@@ -19,7 +18,7 @@ export function Header({onOpenMenu}){
             </div>
             <ButtonText 
                 type="button"
-                icon={PiReceipt}>
+                icon={Receipt}>
                     
             </ButtonText>
 

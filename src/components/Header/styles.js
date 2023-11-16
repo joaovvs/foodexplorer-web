@@ -54,12 +54,12 @@ export const Menu = styled.button`
     background: none;
     border: none;
 
-    >svg{
+    svg{
         font-size: 2.4rem;
         color: ${({theme})=> theme.COLORS.LIGHT_100};
     }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
        display: flex;
        align-items: center;
     }
