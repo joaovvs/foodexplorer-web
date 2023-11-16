@@ -93,7 +93,6 @@ export function Section({title, ...rest}){
             </>
             )}
 
-            <div className="gradient"></div>
         </div>
 
     </Container>

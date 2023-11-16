@@ -10,8 +10,6 @@ export const Container = styled.section`
     justify-content: center;
  
 
-    
-
     h3{
         font-family: 'Poppins', sans-serif;
         font-size: 1.8rem;
@@ -27,7 +25,6 @@ export const Container = styled.section`
         display: flex;
         position: relative;
 
-    
 
     }
 

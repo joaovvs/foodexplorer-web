@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 2.4rem;
-
+    position: relative;
     gap: 1.2rem;
 
     min-width: 21rem;
@@ -16,9 +16,21 @@ export const Container = styled.div`
 
     background: ${({theme})=> theme.COLORS.DARK_200};
 
+    >button:first-child{
+        display: flex;
+        position: absolute;
+        top: 1.6rem;
+        right: 1.8rem;
+
+        font-size: 2.4rem;
+        color: ${({theme})=> theme.COLORS.LIGHT_300};
+    }
+
     img{
         width: 8.8rem;
         height: 8.8rem;
+
+        margin-top: 4.6rem;
     }
 
     h4{ 
