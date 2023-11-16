@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 
 export const Container = styled.div`
     grid-area: header;
@@ -18,6 +20,7 @@ export const Container = styled.div`
         height: 2.4rem;
     }
 
+
     >div {
         display: flex;
         flex-direction: row;
@@ -34,10 +37,30 @@ export const Container = styled.div`
             font-weight: 700;
             color: ${({theme}) => theme.COLORS.LIGHT_100};
         }
+
+
+        
     }
   
 
 
     
 
+`;
+
+
+export const Menu = styled.button`
+    display: none;
+    background: none;
+    border: none;
+
+    >svg{
+        font-size: 2.4rem;
+        color: ${({theme})=> theme.COLORS.LIGHT_100};
+    }
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+       display: flex;
+       align-items: center;
+    }
 `;

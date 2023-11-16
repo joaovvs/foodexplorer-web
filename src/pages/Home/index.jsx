@@ -3,13 +3,20 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Banner } from "../../components/Banner";
 import { Section } from "../../components/Section";
-import { Menu } from "../../components/Menu";
+import { SideMenu } from "../../components/SideMenu";
+import { useState } from "react";
+
 
 export function Home(){
+    const [menuIsOpen, setMenuIsOpen] = new useState(false);
+
     return(
         <Container> 
-            <Menu/>
-            <Header/>
+            <SideMenu
+                menuIsOpen={menuIsOpen}
+                onCloseMenu={() => setMenuIsOpen(false)}
+            />
+            <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
             <Content>
                 
                 <Banner/>

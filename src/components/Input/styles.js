@@ -31,6 +31,7 @@ export const Container = styled.div`
 
         svg{
             color: ${({theme}) => theme.COLORS.LIGHT_400};
+            font-size: 1.8rem;
         }
 
         input{

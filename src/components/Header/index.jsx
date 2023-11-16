@@ -1,17 +1,18 @@
-import { Container } from "./styles";
+import { Container, Menu } from "./styles";
 import { PiReceipt } from "react-icons/pi";
-import { FiMenu } from "react-icons/fi";
+import { List } from "@phosphor-icons/react";
 import  logo from "../../assets/logo.svg"
 import { ButtonText } from "../ButtonText";
 
 
-export function Header({...rest}){
+
+export function Header({onOpenMenu}){
     return(
         <Container>
             
-            <ButtonText 
-            type="button"
-            icon={FiMenu} />
+            <Menu onClick={onOpenMenu}>
+                <List/>
+            </Menu>
             <div>
                 <img src={logo} alt="Logo Food Explorer" />
                 <h1>food explorer</h1>
