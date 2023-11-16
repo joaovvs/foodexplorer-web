@@ -7,8 +7,11 @@ import { SideMenu } from "../../components/SideMenu";
 import { useState } from "react";
 
 
+
 export function Home(){
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
+
+
 
     return(
         <Container> 
@@ -20,7 +23,6 @@ export function Home(){
             <Content>
                 
                 <Banner/>
-
                 <Section title="Refeições"/>
                 <Section title="Sobremesas"/>
                 <Section title="Bebidas"/>

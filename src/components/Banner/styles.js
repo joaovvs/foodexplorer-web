@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import backgroundImage from "../../assets/banner.png"
 
-export const Container = styled.div`
+export const Container = styled.section`
     height: 12rem;
 
     background: ${({theme}) => theme.COLORS.GRADIENTS_200};

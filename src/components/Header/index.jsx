@@ -19,8 +19,9 @@ export function Header({onOpenMenu}){
             </div>
             <ButtonText 
                 type="button"
-                icon={PiReceipt} 
-            />
+                icon={PiReceipt}>
+                    
+            </ButtonText>
 
         </Container>
     )
