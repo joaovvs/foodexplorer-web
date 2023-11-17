@@ -19,8 +19,10 @@ import { CaretLeft, UploadSimple } from "@phosphor-icons/react";
 
 export function Create({food_id, ...rest}){
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
-    const [food, setFood] = new useState({});
-    const [foodImage, setFoodImage] = new useState("");
+    const [foodName, setFoodName] = new useState({});
+    const [foodPrice, setFoodPrice] = new useState({});
+    const [foodDescription, setFoodDescription] = new useState({});
+    const [foodImageName, setFoodImageName] = new useState("");
 
     const navigate = useNavigate();
 
@@ -30,14 +32,17 @@ export function Create({food_id, ...rest}){
 
     function handleUpload(event){
         const file = event.target.files[0];
-        setFoodImage(file);
+        if(file){
+        setFoodImageName(file.name);
+        }
+        else setFoodImageName("");
 
     }
 
 
     useEffect(()=>{
-        console.log(foodImage);
-    },[foodImage])
+        console.log(foodImageName);
+    },[foodImageName])
     
 
 
@@ -63,34 +68,35 @@ export function Create({food_id, ...rest}){
 
 
                     <InputFile 
-                        id="file-input"
-                        className="file-input"
-                        type="file"
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        fileName={foodImage.name}
+                        filename={foodImageName}
                         onChange={handleUpload} 
+                        accept="image/jpeg, image/png, image/gif, image/bmp"
                         />
+                    
                     <Input 
                         type="text"
-                        title="Nome" 
+                        title="Nome"
+                        className="food-name"
                         placeholder="Ex. Salada Ceasar"
-                        on={e => setFood({name: e.target.value})} 
+                        onChange={e => setFoodName(e.target.value)} 
                         />
 
                     <Select title="Categoria"/>
 
                     <Input 
-                        type="number"
-                        step="0,01"
-                        title="Preço" 
+                        type="text"
+                        title="Preço"
+                        className="food-price"
                         placeholder="R$ 00,00"
-                        onChange={e => setFood({price: e.target.value})} 
+                        onChange={e => setFoodPrice(e.target.value)} 
                         />
                     <TextArea 
-                        label="Descrição" 
+                        label="Descrição"
+                        className="food-description"
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-                        onChange={e => setFood({description: e.target.value})} 
+                        onChange={e => setFoodDescription(e.target.value)} 
                         />
             </Form>
             <Footer/>

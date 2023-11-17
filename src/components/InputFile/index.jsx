@@ -1,15 +1,15 @@
 import { Container } from "./styles";
 
 
-export function InputFile({icon: Icon, title,className, fileName, ...rest}){
+export function InputFile({icon: Icon, title, filename, ...rest}){
     return(
         <Container >
             <label >{title}</label>
             <div >
                 
-                <label htmlFor={className}>{Icon && <Icon />}{fileName ? fileName: "Selecione imagem"}</label>
+                <label htmlFor="input-file">{Icon && <Icon />}{filename ? filename: "Selecione imagem"}</label>
                 
-                <input className={className} {...rest}></input>
+                <input id="input-file" className="input-file" type="file" {...rest}/>
             </div>
         </Container>
     )

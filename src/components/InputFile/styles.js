@@ -48,7 +48,7 @@ export const Container = styled.div`
 
     }
 
-    #file-input{
+    #input-file{
         display:none;
     }
 
