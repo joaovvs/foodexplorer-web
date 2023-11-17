@@ -66,7 +66,7 @@ export function Details({food_id, ...rest}){
                     </div>
                 </section>
                 
-                <QuantityPicker quantity="99" title={`pedir - R$ 25,00`} icon={Receipt}/>
+                <QuantityPicker quantity="01" title={`pedir - R$ ${"25,00"}`} icon={Receipt}/>
             
             </Main>
             <Footer/>

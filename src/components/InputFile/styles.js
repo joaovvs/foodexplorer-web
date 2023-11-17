@@ -11,45 +11,45 @@ export const Container = styled.div`
 
 
 
-
     >label{
         font-size: 1.6rem;
         color: ${({theme}) => theme.COLORS.LIGHT_400};
         background: none;
         line-height: 100%;
     }
-    >div{
+
+    div{
         display: flex;
         width: 100%;
-        padding: 1.4rem 1.4rem;
-
+        padding: 1.2rem 3.2rem 1.2rem 7rem;
+        position: relative;
         align-items: center;
-        gap: 1.4rem;
+        gap: .8rem;
 
         background: ${({theme}) => theme.COLORS.DARK_900};
 
-        border-radius: 0.8rem;
+        border-radius: .8rem;
 
         svg{
+            
+            color: ${({theme}) => theme.COLORS.LIGHT_400};
+            position: absolute;
+            left: 3.2rem;
+            font-size: 3.2rem;
+            transform: translateY(-50%);
+            top: 50%;
+        }
+
+        label{
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
             color: ${({theme}) => theme.COLORS.LIGHT_400};
         }
 
-        input{
-            width: 100%;
-            border: none;
+    }
 
-            border-radius: .8rem;
-        
-            background: ${({theme}) => theme.COLORS.DARK_900};
-
-            color: ${({theme}) => theme.COLORS.LIGHT_400};
-
-
-
-            &::placeholder{
-                color: ${({theme}) => theme.COLORS.LIGHT_500};
-            }
-        }
+    #file-input{
+        display:none;
     }
 
 `;
