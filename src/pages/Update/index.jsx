@@ -36,20 +36,12 @@ export function Update(){
     const {food_id} = params;
 
     const [newIngredient, setNewIngredient] = useState("");
-
+    const [updatedFoodImage, setUpdatedFoodImage] = useState({});
 
     const navigate = useNavigate();
 
     function handleBack(){
         navigate(-1);
-    }
-
-    function handleUpload(event){
-        const file = event.target.files[0];
-        if(file){
-            setFood({...food, "image": event.target.value})
-        }
-        else setFood({...food, "image": ""});
     }
 
     function handleAddIngredient(){
@@ -103,6 +95,41 @@ export function Update(){
             }
     }
 
+    function handleUpload(event){
+        const file = event.target.files[0];
+        if(file){
+            setUpdatedFoodImage({"image": file})
+            console.log(updatedFoodImage);
+        }
+        else setUpdatedFoodImage({"image": ""});
+    }
+
+    async function updateImage(){
+        console.log(food.image);
+        console.log(updatedFoodImage.image);
+       if(food.image != updatedFoodImage.image){
+            const fileUploadForm = new FormData();
+            fileUploadForm.append("image", updatedFoodImage.image);
+            const response= await api.patch(`foods/image/${food.id}`, fileUploadForm);
+            setFood({...food, "image": response.data.image});
+        }
+    }
+
+    async function handleUpdate(){
+        try{
+            await updateImage();
+            await api.put("/foods", food)
+            .fetch(()=>alert("Prato atualizado com sucesso!"));
+            
+        }catch(error){
+            if(error.response){
+                return  alert(error.response.data.message);
+            }else{
+                alert("Não foi possível atualizar o prato, tente novamente!");
+            }
+        }
+    }
+
     useEffect(()=> {
             fetchFood();
     },[]);
@@ -133,7 +160,7 @@ export function Update(){
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        filename={food.image}
+                        filename={updatedFoodImage.image.name? updatedFoodImage.image.name: food.image}
                         onChange={handleUpload} 
                         accept="image/jpeg, image/png, image/gif, image/bmp"
                         />
@@ -201,7 +228,8 @@ export function Update(){
                         <Button 
                             type="button"
                             title="Salvar alterações" 
-                            htmlFor="food-create" 
+                            htmlFor="food-update"
+                            onClick={handleUpdate}
                         />
                     </div>
             </Form>
