@@ -22,8 +22,8 @@ import { useAuth } from "../../hooks/auth"
 
 import { CaretLeft, UploadSimple } from "@phosphor-icons/react";
 
-export function Create({food_id, ...rest}){
-    const {user, updateProfile} = useAuth();
+export function Create(){
+    const { user } = useAuth();
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
     const [food, setFood] = new useState({
         name: "",
@@ -88,7 +88,7 @@ export function Create({food_id, ...rest}){
                     setFood({...food, "image": response.data.image});
                 }
             alert("Prato criado com sucesso!");
-            navigate(`/foods/details/${newFood.data.id}`);
+            navigate(`/details/${newFood.data.id}`);
         } catch (error) {
             if(error.response){
                 alert(error.response.data.message)
@@ -126,7 +126,7 @@ export function Create({food_id, ...rest}){
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        filename={food.image.name ? food.image.name: ""}
+                        filename={food.image.name}
                         onChange={handleUpload} 
                         accept="image/jpeg, image/png, image/gif, image/bmp"
                         />

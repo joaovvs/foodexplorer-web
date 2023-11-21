@@ -9,8 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 
 export function Header({onOpenMenu}){
-    const {user} = new useAuth();
+    
+    const { user } = new useAuth();
+    
     const navigate = useNavigate();
+
+    console.log(user);
 
     function handleClickAtLogo(){
         navigate("/");
@@ -28,10 +32,10 @@ export function Header({onOpenMenu}){
                 onClick={handleClickAtLogo}>
                 <img src={logo} alt="Logo Food Explorer" />
                 <h1>food explorer</h1>
-               {[USER_ROLE.ADMIN].includes(user.role) &&<span>{user.role}</span>}
+               {[USER_ROLE.ADMIN].includes(user?.role) &&<span>{user.role}</span>}
             </div>
            
-            {[USER_ROLE.CUSTOMER].includes(user.role) &&
+            {[USER_ROLE.CUSTOMER].includes(user?.role) &&
                 <div id="cart-wrapper">
                     <ButtonText 
                         className="btn-cart"

@@ -45,6 +45,7 @@ export const Main = styled.main`
     
     img{
         width: 26.4rem;
+        border-radius: 50%;
     }
     
     section{

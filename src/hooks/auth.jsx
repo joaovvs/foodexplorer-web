@@ -5,12 +5,9 @@ import {
     useEffect 
 } from "react";
 
-import { api } from "../services/api"
-
-
-
-
 const AuthContext = createContext({});
+
+import { api } from "../services/api"
 
 
 function AuthProvider({children}){

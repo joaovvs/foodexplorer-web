@@ -9,7 +9,7 @@ import { ButtonText } from "../../components/ButtonText";
 
 import { QuantityPicker } from "../../components/QuantityPicker";
 import { Tag } from "../../components/Tag";
-import blank from "../../assets/blank.svg"
+import noImage from "../../assets/no image.png" 
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from '../../utils/roles';
@@ -28,7 +28,7 @@ export function Details(){
     const params = useParams();
     const {food_id} = params;
 
-    const foodImageUrl = food.image ? `${api.defaults.baseURL}/files/${food.image}` : blank;   
+    const foodImageUrl = food.image ? `${api.defaults.baseURL}/files/${food.image}` : noImage;   
 
 
     function handleBack(){
@@ -67,7 +67,6 @@ export function Details(){
                 menuIsOpen={menuIsOpen}
                 onCloseMenu={() => setMenuIsOpen(false)}
             />
-
            
             <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
             

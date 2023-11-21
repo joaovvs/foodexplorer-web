@@ -5,14 +5,16 @@ import { Banner } from "../../components/Banner";
 import { Section } from "../../components/Section";
 import { SideMenu } from "../../components/SideMenu";
 import { useState } from "react";
+import { useAuth } from "../../hooks/auth"
 
 
 
 export function Home(){
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
+    const { user } = useAuth();
 
-
-
+    console.log("home");
+    console.log(user);
     return(
         <Container> 
             <SideMenu
