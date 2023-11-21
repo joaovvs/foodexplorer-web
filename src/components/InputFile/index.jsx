@@ -4,7 +4,7 @@ import { Container } from "./styles";
 export function InputFile({icon: Icon, title, filename, ...rest}){
     return(
         <Container >
-            <label >{title}</label>
+            <label htmlFor="input-file">{title}</label>
             <div >
                 
                 <label htmlFor="input-file">{Icon && <Icon />}{filename ? filename: "Selecione imagem"}</label>

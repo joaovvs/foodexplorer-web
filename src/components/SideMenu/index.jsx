@@ -4,8 +4,24 @@ import { Footer } from "../Footer";
 import { Input } from "../Input";
 import { FiSearch } from "react-icons/fi"
 import { TfiClose } from "react-icons/tfi";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export function SideMenu({menuIsOpen, onCloseMenu}){
+    const { signOut, user} = useAuth();
+
+    const navigate = new useNavigate();
+
+    function handleNew(){
+        navigate("/create");
+    }
+
+
+    function handleSignOut(){
+        signOut();
+        navigate("/");
+    }
+
     return(
         <Container data-menu-is-open={menuIsOpen}>
             <Header>
@@ -19,8 +35,19 @@ export function SideMenu({menuIsOpen, onCloseMenu}){
                 <Input icon={FiSearch} placeholder="Busque por pratos ou ingredientes"/>
                 <nav>
                     <ul>
-                        <li><ButtonText type="button" title="Novo prato"/></li>
-                        <li><ButtonText type="button" title="Sair"/></li>
+                       {
+                        user.role =="admin" && 
+                        <li>
+                            <ButtonText 
+                            type="button" 
+                            title="Novo prato"
+                            onClick={handleNew}/>
+                            </li>
+                       }
+                        <li><ButtonText 
+                            type="button" 
+                            title="Sair"
+                            onClick={handleSignOut}/></li>
                     </ul>    
                 </nav>
             </Main>

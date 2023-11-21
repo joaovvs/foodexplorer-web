@@ -13,14 +13,16 @@ export const Container = styled.div`
     border-radius: .5rem;
 
     font-family: 'Poppins', sans-serif;
-    padding: .4rem .8rem ;
     color:  ${({theme})=> theme.COLORS.LIGHT_100};
 
 
     >textarea{
         padding: 1.4rem;
         border-radius: .5rem;
-        background: ${({theme})=> theme.COLORS.DARK_800};
+        height: 17.2rem;
+        background: ${({theme})=> theme.COLORS.DARK_900};
+
+        color:  ${({theme})=> theme.COLORS.LIGHT_100};
 
         border: none;
 

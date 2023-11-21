@@ -9,13 +9,16 @@ import  foodImage from "../../assets/Mask group-10.png"
 import { Tag } from "../../components/Tag";
 
 import { CaretLeft, Receipt } from "@phosphor-icons/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function Details({food_id, ...rest}){
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
     const [food, setFood] = new useState({});
 
     const navigate = useNavigate();
+
+    const params = useParams();
+    const {food_id} = params;
 
     function handleBack(){
         navigate(-1);

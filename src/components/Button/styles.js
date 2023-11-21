@@ -10,7 +10,7 @@ export const Container = styled.button`
 
     border-radius: .5rem;
 
-    background-color: ${({theme}) => theme.COLORS.TOMATO};
+    background-color: ${({theme, $isDelete}) => $isDelete ? theme.COLORS.DARK_900 : theme.COLORS.TOMATO};
 
     font-family: 'Poppins', sans-serif;
 
@@ -20,6 +20,12 @@ export const Container = styled.button`
     line-height: 2.4rem;
 
     color: ${({theme}) => theme.COLORS.LIGHT_100};
+
+
+    &:disabled{
+        background-color: ${({theme}) => theme.COLORS.TOMATO_400};
+
+    }
 `;
 
 

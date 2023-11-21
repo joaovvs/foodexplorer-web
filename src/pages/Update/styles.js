@@ -14,14 +14,19 @@ export const Container = styled.div`
 
     nav{
         display: flex;
-        justify-items: center;
+        
         grid-area: navigate;
 
-        margin: 3.75rem 5.6rem 1.6rem 5.6rem;
+        margin: 1.2rem 5.6rem 3.5rem 3.2rem;
 
         button{
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.4rem;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+
+            svg{
+                font-size: 2.2rem;
+            }
         }
 
     }
@@ -36,63 +41,52 @@ export const Form = styled.form`
 
     display: flex;
     flex-direction: column;
+    width: 100%;
 
-    align-items: center;
 
     gap: 2.4rem;
     
-    padding: 0 5.6rem;
+    padding: 0 3.2rem;
 
     margin-bottom: 3.3rem;
     
-    
-    section{
+    h1{
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.7rem;
+
+        color: ${({theme})=> theme.COLORS.LIGHT_300};
+        font-weight: 500;
+    }
+
+    label{
+            color: ${({theme})=> theme.COLORS.LIGHT_300};
+    }
+
+    #ingredients{
         display: flex;
         flex-direction: column;
 
-        align-items: center;
-        
-
-        gap: 2.4rem;
-
-        margin-bottom: 4.8rem;
-
-        h1{
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.7rem;
-
-            color: ${({theme})=> theme.COLORS.LIGHT_300};
-            font-weight: 500;
-        }
-
-        p{
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.62rem;
-            color: ${({theme})=> theme.COLORS.LIGHT_300};
-        }
+        gap: 1.6rem;
     }
 
-    .tag-list{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2.4rem;
-
-        justify-content: center;
-
-    }
-
-    >div:last-child{
+    #tags-wrapper{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
-       margin-bottom: 2rem;
+        align-items: center;
 
+        background: ${({theme})=> theme.COLORS.DARK_900};
 
-        button{
-            font-size: .9rem;
-            gap: .54rem;
-        }
+        border-radius: 0.8rem;
 
+        padding: 0.8rem;
+        gap: 1.6rem;
+
+    }
+
+    .btn-wrapper{
+        display: flex;
+        gap: 3.2rem;
     }
 `;

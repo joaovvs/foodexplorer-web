@@ -58,5 +58,30 @@ export const Form = styled.form`
         font-weight: 500;
     }
 
+    label{
+            color: ${({theme})=> theme.COLORS.LIGHT_300};
+    }
 
+    #ingredients{
+        display: flex;
+        flex-direction: column;
+
+        gap: 1.6rem;
+    }
+
+    #tags-wrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        align-items: center;
+
+        background: ${({theme})=> theme.COLORS.DARK_900};
+
+        border-radius: 0.8rem;
+
+        padding: 0.8rem;
+        gap: 1.6rem;
+
+    }
 `;

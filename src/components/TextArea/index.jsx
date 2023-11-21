@@ -2,11 +2,11 @@ import { Container } from "./styles";
 
 
 
-export function TextArea({label, placeholder, ...rest}){
+export function TextArea({label, id, ...rest}){
     return(
-        <Container {...rest}>
-           <label >{label}</label>
-           <textarea placeholder={placeholder}/>
+        <Container >
+           <label htmlFor={id}>{label}</label>
+           <textarea id={id} {...rest}/>
         </Container>
 
     );

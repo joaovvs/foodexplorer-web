@@ -1,13 +1,13 @@
 import { Container } from "./styles";
 
 
-export function Input({icon: Icon, title, ...rest}){
+export function Input({icon: Icon,id, title, ...rest}){
     return(
-        <Container {...rest}>
-            <label >{title}</label>
+        <Container >
+            <label htmlFor={id}>{title}</label>
             <div>
                 {Icon && <Icon />}
-                <input {...rest}></input>
+                <input id={id} {...rest}></input>
             </div>
         </Container>
     )

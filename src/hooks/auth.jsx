@@ -8,6 +8,8 @@ import {
 import { api } from "../services/api"
 
 
+
+
 const AuthContext = createContext({});
 
 
@@ -27,6 +29,7 @@ function AuthProvider({children}){
             localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
 
             setData({user});
+            
         } catch (error) {
             if (error.response) {
               alert(error.response.data.message);
@@ -40,6 +43,7 @@ function AuthProvider({children}){
         localStorage.removeItem("@foodexplorer:user");
 
         setData({});
+    
     }
 
     useEffect(() => {
