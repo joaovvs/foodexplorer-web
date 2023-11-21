@@ -88,7 +88,7 @@ export function Create({food_id, ...rest}){
                     setFood({...food, "image": response.data.image});
                 }
             alert("Prato criado com sucesso!");
-            navigate(-1);
+            navigate(`/foods/details/${newFood.data.id}`);
         } catch (error) {
             if(error.response){
                 alert(error.response.data.message)
@@ -126,7 +126,7 @@ export function Create({food_id, ...rest}){
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        filename={food.image.name}
+                        filename={food.image.name ? food.image.name: ""}
                         onChange={handleUpload} 
                         accept="image/jpeg, image/png, image/gif, image/bmp"
                         />

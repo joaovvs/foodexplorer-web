@@ -5,7 +5,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 export const Container = styled.div`
     grid-area: header;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     padding: 6.4rem 2.8rem 2.4rem;
@@ -16,16 +16,18 @@ export const Container = styled.div`
 
 
     button svg{
-        width: 2.4rem;
-        height: 2.4rem;
+        width: 3.2rem;
+        height: 3.2rem;
     }
 
 
-    >div {
+    .logo {
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: .8rem;
+
+        cursor: pointer;
 
         img{
             width: 2.461rem;
@@ -45,8 +47,37 @@ export const Container = styled.div`
         }
         
     }
-  
+    #cart-wrapper{
+        display: flex;
+        position: absolute;
+        right: 2.8rem;
 
+        span{
+            background: ${({theme})=> theme.COLORS.TOMATO};
+            color: ${({theme})=> theme.COLORS.LIGHT_100};
+            border-radius: 5rem;
+            position: absolute;
+            top: .2rem;
+            right: .2rem;
+            width: 2rem;
+            height: 2rem;
+            padding: 1.2rem 1.2rem;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.4rem;
+
+            margin-top: -1rem;
+            margin-right: -1rem;
+        }
+
+        svg{
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+    }
 
     
 
@@ -58,13 +89,18 @@ export const Menu = styled.button`
     background: none;
     border: none;
 
+   
+
     svg{
         font-size: 2.4rem;
         color: ${({theme})=> theme.COLORS.LIGHT_100};
     }
 
     @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
-       display: flex;
-       align-items: center;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 2.8rem;
+
     }
 `;

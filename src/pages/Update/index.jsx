@@ -153,7 +153,7 @@ export function Update(){
                     />
 
                     <div id="ingredients-wrapper">
-                        <h2>Ingredientes</h2>
+                        <h3>Ingredientes</h3>
                     
                         <div id="tags-wrapper"> 
                             { food.ingredients.map((ingredient, index) => 

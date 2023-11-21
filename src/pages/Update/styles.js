@@ -58,15 +58,22 @@ export const Form = styled.form`
         font-weight: 500;
     }
 
-    label{
-            color: ${({theme})=> theme.COLORS.LIGHT_300};
+    h3{
+            color: ${({theme})=> theme.COLORS.LIGHT_400};
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1.6rem;
     }
+
+
 
     #ingredients{
         display: flex;
         flex-direction: column;
 
         gap: 1.6rem;
+
+        
     }
 
     #tags-wrapper{
