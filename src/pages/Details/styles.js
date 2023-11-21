@@ -39,8 +39,6 @@ export const Main = styled.main`
 
     align-items: center;
 
-    gap: 2.4rem;
-    
     padding: 0 5.6rem;
 
     margin-bottom: 3.3rem;

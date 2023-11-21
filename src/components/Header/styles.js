@@ -38,7 +38,11 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.LIGHT_100};
         }
 
-
+        span{
+            color: ${({theme})=> theme.COLORS.CAKE_200};
+            font-size: 1.2rem;
+            line-height: 160%;
+        }
         
     }
   
