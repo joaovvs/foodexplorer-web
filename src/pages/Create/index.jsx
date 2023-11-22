@@ -126,7 +126,7 @@ export function Create(){
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        filename={food.image.name}
+                        filename={food?.image?.name}
                         onChange={handleUpload} 
                         accept="image/jpeg, image/png, image/gif, image/bmp"
                         />

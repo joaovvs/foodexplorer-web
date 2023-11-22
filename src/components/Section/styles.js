@@ -15,7 +15,7 @@ export const Container = styled.section`
         font-size: 1.8rem;
         font-weight: 500;
         line-height: 140%;
-
+        text-transform: capitalize;
         margin-bottom: 2.4rem;
 
         color: ${({theme})=> theme.COLORS.LIGHT_300};

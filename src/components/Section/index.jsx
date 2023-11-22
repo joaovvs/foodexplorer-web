@@ -1,12 +1,13 @@
 import { Container } from "./styles";
 import { Card } from "../Card";
-import foodImage from "../../assets/Mask group-10.png"
-import { useKeenSlider } from "keen-slider/react"
+import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css"
 import { useState } from "react";
 import { CaretRight, CaretLeft } from "@phosphor-icons/react";
+import { api } from "../../services/api";
+import noImage from "../../assets/no image.png";
 
-export function Section({title, ...rest}){
+export function Section({title, foodList,...rest}){
         //keenSlider init
         const [currentSlide, setCurrentSlide] = useState(0)
         const [loaded, setLoaded] = useState(false)
@@ -32,49 +33,18 @@ export function Section({title, ...rest}){
         <h3>{title}</h3>
         <div className="navigation-wrapper">
             <div id="card-list" ref={sliderRef} className="keen-slider">
-                
-                <Card  
-                    className="keen-slider__slide number-slide1" 
-                    name="Salada Ravanello1" 
-                    price="49,97" 
-                    image={foodImage}
-                />
-                <Card  
-                    className="keen-slider__slide number-slide2" 
-                    name="Salada Ravanello2" 
-                    price="49,97" 
-                    image={foodImage}
-                />
-                <Card  
-                    className="keen-slider__slide number-slide3" 
-                    name="Salada Ravanello3" 
-                    price="49,97" 
-                    image={foodImage}
-                />
-                <Card  
-                    className="keen-slider__slide number-slide4" 
-                    name="Salada Ravanello4" 
-                    price="49,97" 
-                    image={foodImage}
-                />
-                <Card  
-                    className="keen-slider__slide number-slide5" 
-                    name="Salada Ravanello5" 
-                    price="49,97" 
-                    image={foodImage}
-                /> 
-                <Card  
-                    className="keen-slider__slide number-slide6" 
-                    name="Salada Ravanello6" 
-                    price="49,97" 
-                    image={foodImage}
-                /> 
-                <Card  
-                className="keen-slider__slide number-slide7" 
-                    name="Salada Ravanello7" 
-                    price="49,97" 
-                    image={foodImage}
-                /> 
+                { foodList.length>0 && 
+                  foodList.map((food,index) => (
+                      <Card  
+                      key={index}
+                      cardId={food.id}
+                      className={`keen-slider__slide number-slide${index}`}
+                      name={food.name} 
+                      price={food.price}
+                      image={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage}
+                      />
+                  ))
+                }
             </div>
             {loaded && instanceRef.current && (
             <>
