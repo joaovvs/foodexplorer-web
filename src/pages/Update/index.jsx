@@ -117,17 +117,18 @@ export function Update(){
 
     async function handleUpdate(){
         try{
-            await updateImage();
-            await api.put("/foods", food)
-            .fetch(()=>alert("Prato atualizado com sucesso!"));
-            
+            updatedFoodImage.image && await updateImage();
+            await api.put("/foods", food);
+            alert("Prato atualizado com sucesso!");
+            navigate(-1);
+
         }catch(error){
-            if(error.response){
-                return  alert(error.response.data.message);
-            }else{
-                alert("Não foi possível atualizar o prato, tente novamente!");
+                if(error.response){
+                    alert(error.response.data.message);
+                }else{
+                    alert("Não foi possível atualizar o prato, tente novamente!");
+                }
             }
-        }
     }
 
     useEffect(()=> {
@@ -160,7 +161,7 @@ export function Update(){
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
-                        filename={updatedFoodImage.image.name? updatedFoodImage.image.name: food.image}
+                        filename={updatedFoodImage.image?.name ? updatedFoodImage.image.name: food.image}
                         onChange={handleUpload} 
                         accept="image/jpeg, image/png, image/gif, image/bmp"
                         />
