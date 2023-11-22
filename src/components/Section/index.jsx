@@ -34,16 +34,18 @@ export function Section({title, foodList,...rest}){
         <div className="navigation-wrapper">
             <div id="card-list" ref={sliderRef} className="keen-slider">
                 { foodList.length>0 && 
-                  foodList.map((food,index) => (
-                      <Card  
-                      key={index}
-                      cardId={food.id}
-                      className={`keen-slider__slide number-slide${index}`}
-                      name={food.name} 
-                      price={food.price}
-                      image={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage}
-                      />
-                  ))
+                  foodList.map((food,index) => {
+                      if(food.category.includes(title)){
+                       return <Card  
+                        key={index}
+                        cardId={food.id}
+                        className={`keen-slider__slide number-slide${index}`}
+                        name={food.name} 
+                        price={food.price}
+                        image={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage}
+                        />
+                      }
+                  })
                 }
             </div>
             {loaded && instanceRef.current && (
