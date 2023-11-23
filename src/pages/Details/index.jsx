@@ -39,23 +39,24 @@ export function Details(){
         navigate(`/update/${food_id}`);
     }
 
-    async function fetchFood(){
-        try{
-            const foodSearch = await api.get(`foods/${food_id}`);
-            setFood(foodSearch.data);
-            }catch (error) {
-                if(error.response){
-                      return  alert(error.response.data.message);
-                }else{
-                    alert("Prato não encontrado!");
-                    navigate("/");
-                    return;
-                }
-            }
-    }
+
 
 
     useEffect(()=>{
+        async function fetchFood(){
+            try{
+                const foodSearch = await api.get(`foods/${food_id}`);
+                setFood(foodSearch.data);
+                }catch (error) {
+                    if(error.response){
+                          return  alert(error.response.data.message);
+                    }else{
+                        alert("Prato não encontrado!");
+                        navigate("/");
+                        return;
+                    }
+                }
+        }
         fetchFood();
     },[])
     
@@ -100,12 +101,12 @@ export function Details(){
                     </div>
                 </section>
                 
-              {[USER_ROLE.COSTUMER].includes(user.role) &&
+            { [USER_ROLE.CUSTOMER].includes(user.role) && food.price &&
                 <QuantityPicker 
-                    quantity="01" 
-                    title={`pedir - R$ ${food.price}`} 
+                    price={food.price}
+                    title={`pedir`} 
                     icon={Receipt}/>
-              }
+            }
 
               {[USER_ROLE.ADMIN].includes(user.role) &&
                <Button 

@@ -14,8 +14,6 @@ export function Header({onOpenMenu}){
     
     const navigate = useNavigate();
 
-    console.log(user);
-
     function handleClickAtLogo(){
         navigate("/");
     }
@@ -45,7 +43,6 @@ export function Header({onOpenMenu}){
                     <span>0</span>
                 </div>
             }
-
         </Container>
     )
 }
