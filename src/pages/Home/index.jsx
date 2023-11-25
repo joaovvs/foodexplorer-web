@@ -14,8 +14,6 @@ export function Home(){
     const [foodList,setFoodList] = new useState([]);
     const [sections, setSections] = new useState([]);
     const [userFavorites, setUserFavorites] = new useState([]);
-    
-
     const[search, setSearch] = useState("");
 
     const updateSearch = (newSearch) => {
@@ -24,16 +22,36 @@ export function Home(){
 
 
     async function foodListFetch(){
-        try{
-            const response = await api.get(`/foods/?ingredients=${""}&name=${""}`);
-            setFoodList(response.data);
+        if(!search){
+            try{            
+                const response = await api.get(`/foods/?ingredients=${""}&name=${""}`);
+                setFoodList(response.data);
 
-        }catch(error){
-            if(error.response){
-                alert(error.response.data.message)
+            }catch(error){
+                if(error.response){
+                    alert(error.response.data.message)
 
-            } else{
-                alert("Não foi possível recuperar a lista de pratos!");
+                } else{
+                    alert("Não foi possível recuperar a lista de pratos!");
+                }
+            }
+        }
+        else{
+            try{     
+                //search ingredients       
+                const response1 = await api.get(`/foods/?ingredients=${search}&name=${""}`);
+                //search by foodname
+                const response2 = await api.get(`/foods/?ingredients=${""}&name=${search}`);
+                const searchResult= [...response1.data,...response2.data];
+                console.log(searchResult);
+                setFoodList([...response1.data,...response2.data]);
+            }catch(error){
+                if(error.response){
+                    alert(error.response.data.message)
+
+                } else{
+                    alert("Não foi possível recuperar a lista de pratos!");
+                }
             }
         }
     }
@@ -52,15 +70,11 @@ export function Home(){
     }
 
     async function handleFavoritesChange(food_id){
-        console.log(userFavorites);
-        console.log(food_id);
-        console.log(userFavorites.some(food => food.food_id ==food_id));
+
         if(userFavorites.some(food => food.food_id ==food_id)){
-           console.log("já é um favorito, remover")
            await handleRemoveFavorites(food_id);
            fetchUserFavorites();
         }else{
-            console.log("não é um favorito, adicionar");
             await handleAddFavorites(food_id);
             fetchUserFavorites();
         }
@@ -69,8 +83,6 @@ export function Home(){
     }
 
     async function handleAddFavorites(food_id){
-        const confirm = window.confirm("Deseja realmente incluir o prato dos favoritos?");
-        if(confirm){
         try{
             await api.post(`/favorites/${food_id}`); 
             alert("Prato adicionado aos favoritos com sucesso!");
@@ -81,12 +93,10 @@ export function Home(){
               alert("Não foi possível favoritar o prato, tente novamente!");
           }
         }
-      }
+
     }
   
-      async function handleRemoveFavorites(food_id){
-        const confirm = window.confirm("Deseja realmente remover o prato dos favoritos?");
-        if(confirm){
+    async function handleRemoveFavorites(food_id){
             try{
                 const result =await api.delete(`/favorites/${food_id}`); 
                 console.log(result);
@@ -98,7 +108,7 @@ export function Home(){
                 alert("Não foi remover o prato dos favoritos, tente novamente!");
             }
             }
-        }
+
       }
 
 
@@ -114,6 +124,9 @@ export function Home(){
         setSections(existentSections);
     },[foodList]);
    
+   useEffect(()=>{
+        foodListFetch();
+   },[search]);
    
     useEffect(()=>{
         foodListFetch();

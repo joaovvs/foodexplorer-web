@@ -6,9 +6,11 @@ import { FiSearch } from "react-icons/fi"
 import { TfiClose } from "react-icons/tfi";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function SideMenu({menuIsOpen, onCloseMenu, onSearchChange}){
     const { signOut, user} = useAuth();
+    const [searchTimeout, setSearchTimeout] = useState(null);
 
     const navigate = new useNavigate();
 
@@ -24,7 +26,7 @@ export function SideMenu({menuIsOpen, onCloseMenu, onSearchChange}){
 
     const handleSearchChange = (e) =>{
         const newSearch = e.target.value;
-        setSearch(newSearch);
+        onSearchChange(newSearch);
 
         // Cancels any search
         if (searchTimeout) {
