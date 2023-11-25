@@ -33,6 +33,7 @@ export function SignIn(){
             <h1>food explorer</h1>
         </header>
         <Form>
+            <h2>Faça login</h2>
             <Input 
                 type="text"
                 title="Email" 

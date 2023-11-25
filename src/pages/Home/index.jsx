@@ -78,14 +78,12 @@ export function Home(){
             await handleAddFavorites(food_id);
             fetchUserFavorites();
         }
-
         await fetchUserFavorites();
     }
 
     async function handleAddFavorites(food_id){
         try{
-            await api.post(`/favorites/${food_id}`); 
-            alert("Prato adicionado aos favoritos com sucesso!");
+            await api.post(`/favorites/${food_id}`);
         }catch(error){
           if(error.response){
               alert(error.response.data.message)
@@ -98,8 +96,7 @@ export function Home(){
   
     async function handleRemoveFavorites(food_id){
             try{
-                const result =await api.delete(`/favorites/${food_id}`); 
-                console.log(result);
+                await api.delete(`/favorites/${food_id}`);
                 alert("Prato removido dos favoritos com sucesso!");
             }catch(error){
             if(error.response){
