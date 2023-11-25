@@ -30,7 +30,7 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.LIGHT_100};
         }
     }
-    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -69,7 +69,7 @@ export const Form = styled.form`
         display: none;
     }
 
-    @media (min-width: ${DEVICE_BREAKPOINTS.MD}) {
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
         padding: 6.4rem;
         border-radius: 1.6rem;
         background: ${({theme}) => theme.COLORS.DARK_700};

@@ -47,6 +47,7 @@ export function SignUp(){
             <h1>food explorer</h1>
         </header>
         <Form>
+            <h2>Crie sua conta</h2>
             <Input 
                 type="text"
                 title="Seu nome" 
