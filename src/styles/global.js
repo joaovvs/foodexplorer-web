@@ -34,7 +34,7 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
-    button:hover, a:hover{
+    a:hover{
         filter: brightness(0.7);
     }
 

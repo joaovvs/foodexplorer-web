@@ -53,7 +53,7 @@ export const Container = styled.div`
         right: 2.8rem;
 
         span{
-            background: ${({theme})=> theme.COLORS.TOMATO};
+            background: ${({theme})=> theme.COLORS.TOMATO_100};
             color: ${({theme})=> theme.COLORS.LIGHT_100};
             border-radius: 5rem;
             position: absolute;

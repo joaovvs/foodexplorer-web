@@ -36,7 +36,7 @@ export function Header({onOpenMenu}){
             {[USER_ROLE.CUSTOMER].includes(user?.role) &&
                 <div id="cart-wrapper">
                     <ButtonText 
-                        className="btn-cart"
+                        className="btn-cart-mobile"
                         type="button"
                         icon={Receipt}>        
                     </ButtonText>

@@ -3,21 +3,33 @@ import { useNavigate } from "react-router-dom";
 import { ButtonText } from "../ButtonText";
 import { QuantityPicker } from "../QuantityPicker";
 import { Container } from "./styles";
-import { PencilSimple, Heart} from "@phosphor-icons/react";
+import { PencilSimple} from "@phosphor-icons/react";
+import noImage from "../../assets/no image.png";
+
+import { api } from "../../services/api";
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from '../../utils/roles';
+import { useState } from "react";
 
-export function Card({name, image,cardId, price, ...rest}){
+export function Card({food, isfavorite,onFavoriteChange, ...rest}){
     const navigate = useNavigate();
     const { user } = useAuth();
 
     function handleDetails(){
-        navigate(`/details/${cardId}`);
+        navigate(`/details/${food.id}`);
     }
+
+    function handleFavoriteToggle(){
+        onFavoriteChange(food.id);
+    }
+
+
+
    return( <Container 
-        {...rest}
-        
+        {...rest} 
+        isfavorite={isfavorite}
+        id={food.id}
         >
 
         { [USER_ROLE.ADMIN].includes(user.role) && <ButtonText 
@@ -25,18 +37,27 @@ export function Card({name, image,cardId, price, ...rest}){
             onClick={handleDetails}
         /> }
 
-        { [USER_ROLE.CUSTOMER].includes(user.role) && <ButtonText 
-            icon={Heart} 
-            onClick={handleDetails}
-        /> }
+        { [USER_ROLE.CUSTOMER].includes(user.role) && 
+            <button className="toogleFavorite favorite" 
+                    onClick={handleFavoriteToggle}
+                > 
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 256 256"><rect width="256" height="256" 
+                fill="none"/><path 
+                d="M128,216S24,160,24,94A54,54,0,0,1,78,40c22.59,0,41.94,12.31,50,32,8.06-19.69,27.41-32,50-32a54,54,0,0,1,54,54C232,160,128,216,128,216Z" 
+                fill="none" stroke="currentColor" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="16"/>
+            </svg>
+            </button> }
 
 
 
-        <img src={image} alt= {`Imagem do prato ${name}`} 
-        onClick={handleDetails}/>
+        <img src={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage} alt= {`Imagem do prato ${food.name}`}/>
         <ButtonText onClick={handleDetails}
-        title={`${name} >` }/>
-        <span>{Number(price).toLocaleString('pt-br', { style: "currency", currency: "BRL" })}</span>
+            title={`${food.name} >` }/>
+        <span>{Number(food.price).toLocaleString('pt-br', { style: "currency", currency: "BRL" })}</span>
 
       { [USER_ROLE.CUSTOMER].includes(user.role) &&
         <QuantityPicker title="incluir"/>}

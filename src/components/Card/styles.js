@@ -16,13 +16,20 @@ export const Container = styled.div`
 
     background: ${({theme})=> theme.COLORS.DARK_200};
 
-    >button:first-child{
+    &[isfavorite$="true"]{
+        .favorite path{
+            fill:  ${({theme})=> theme.COLORS.LIGHT_300};
+        }
+    }
+    
+    .favorite{
         display: flex;
         position: absolute;
         top: 1.6rem;
         right: 1.8rem;
-
-        font-size: 2.4rem;
+        background-color: transparent;
+        width: 2.4rem;
+        height: 2.4rem;
         color: ${({theme})=> theme.COLORS.LIGHT_300};
     }
 

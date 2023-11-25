@@ -60,7 +60,7 @@ export function Update(){
         const confirm = window.confirm("Deseja realmente remover o prato?");
         try{
             await api.delete(`/foods/${food_id}`);
-            alert("Prado removido com sucesso!");
+            alert("Prato removido com sucesso!");
 
             setFood( {id: "",
                 name: "",
