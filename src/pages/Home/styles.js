@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     display: grid;
@@ -11,7 +12,9 @@ export const Container = styled.div`
 
     background: ${({theme}) => theme.COLORS.DARK_400};
 
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
 
+    }
 `;
 
 export const Content = styled.main`
@@ -25,5 +28,7 @@ export const Content = styled.main`
     
 
     padding: 4.4rem 1.6rem 2.4rem 3.6rem;
-    
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        padding: 16.4rem 12.4rem;
+    }
 `;

@@ -2,15 +2,15 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 
-export const Container = styled.div`
+export const Container = styled.header`
     grid-area: header;
     display: flex;
+
     justify-content: center;
     align-items: center;
 
     padding: 6.4rem 2.8rem 2.4rem;
-
-    width: 100%;
+    width: 100vw;
 
     background: ${({theme}) => theme.COLORS.DARK_700};
 
@@ -26,18 +26,22 @@ export const Container = styled.div`
         flex-direction: row;
         align-items: center;
         gap: .8rem;
-
         cursor: pointer;
-
+        
         img{
             width: 2.461rem;
             height: 2.461rem;
         }
 
         h1{
+            display: flex;
             font-size: 2.1rem;
             font-weight: 700;
             color: ${({theme}) => theme.COLORS.LIGHT_100};
+            flex-wrap: nowrap;
+
+            width: max-content;
+            
         }
 
         span{
@@ -47,7 +51,18 @@ export const Container = styled.div`
         }
         
     }
+
+    #search{
+        display: none;
+    }
+
     #cart-wrapper{
+        
+        .btn-cart-desktop{
+            display: none;
+        }
+        
+        
         display: flex;
         position: absolute;
         right: 2.8rem;
@@ -79,7 +94,46 @@ export const Container = styled.div`
         }
     }
 
-    
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+        background: ${({theme}) => theme.COLORS.DARK_600};
+        justify-content: space-between;
+        padding: 2.4rem 12.3rem;
+
+        gap: 3.2rem;
+
+        .logo{
+         
+            img{
+                width: 3rem;
+                height: 3rem;
+            }
+
+            gap: 1rem;
+        }
+
+        #search{
+            display: block;
+        }
+        #cart-wrapper{
+            position: unset;
+
+            .btn-cart-mobile{
+                display: none;
+            }
+
+            .btn-cart-desktop{
+                display: flex;
+                padding: 1.2rem 3.2rem;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                font-size: 1.4rem;
+                line-height: 2.5rem;
+                gap: .8rem;
+
+                width: max-content;
+            }
+        }
+    }
 
 `;
 
@@ -96,7 +150,7 @@ export const Menu = styled.button`
         color: ${({theme})=> theme.COLORS.LIGHT_100};
     }
 
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+    @media (max-width: ${DEVICE_BREAKPOINTS.LG}) {
         display: flex;
         align-items: center;
         position: absolute;

@@ -137,7 +137,7 @@ export function Home(){
                 menuIsOpen={menuIsOpen}
                 onCloseMenu={() => setMenuIsOpen(false)}
             />
-            <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
+            <Header onOpenMenu={()=> setMenuIsOpen(true)} onSearchChange={updateSearch}/>
             <Content>
                 
                 <Banner/>
