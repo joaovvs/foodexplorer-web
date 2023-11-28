@@ -33,6 +33,7 @@ export function SideMenu({menuIsOpen, onCloseMenu, onSearchChange}){
             </Header>
             <Main>
                 <SearchInput
+                    id="menu-search"
                     placeholder="Busque por pratos ou ingredientes"
                     onSearchChange={onSearchChange}/>
                 <nav>

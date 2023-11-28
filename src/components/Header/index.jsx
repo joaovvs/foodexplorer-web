@@ -13,11 +13,20 @@ import { SearchInput } from "../SearchInput";
 
 export function Header({onOpenMenu,onSearchChange}){
     
-    const { user } = new useAuth();
+    const { user, signOut } = new useAuth();
     
     const navigate = useNavigate();
 
     function handleClickAtLogo(){
+        navigate("/");
+    }
+
+    function handleNew(){
+        navigate("/create");
+    }
+
+    function handleSignOut(){
+        signOut();
         navigate("/");
     }
 
@@ -37,6 +46,7 @@ export function Header({onOpenMenu,onSearchChange}){
 
 
             <SearchInput 
+                id="header-search"
                 placeholder="Busque por pratos ou ingredientes"
                 onSearchChange={onSearchChange}/>
            
@@ -46,8 +56,7 @@ export function Header({onOpenMenu,onSearchChange}){
                         className="btn-cart-desktop"
                         type="button"
                         icon={Receipt}
-                        title={`Pedidos (${0})`}>        
-                    </Button>
+                        title={`Pedidos (${0})`}/>        
                     
                     <div className="btn-cart-mobile">
                         <ButtonText  
@@ -58,10 +67,20 @@ export function Header({onOpenMenu,onSearchChange}){
                     </div>
                 </div>
             }
-            <ButtonText
+             {[USER_ROLE.ADMIN].includes(user?.role) && 
+                <Button
                 type="button"
-                icon={SignOut}>       
-            </ButtonText>
+                className="btn-new"
+                title={"Novo prato"}
+                onClick={handleNew}/>
+
+            }
+            <ButtonText
+                aria-label="logout"
+                className="btn-sign-out"
+                type="button"
+                icon={SignOut}
+                onClick={handleSignOut}/>
 
             
         </Container>

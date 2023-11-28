@@ -18,6 +18,8 @@ export const Container = styled.section`
     position: relative;
 
     margin-bottom: 3.8rem;
+
+    animation: apear 1s;
     
 
     h2{
@@ -26,6 +28,11 @@ export const Container = styled.section`
         font-weight: 600;
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.LIGHT_300};
+        //animations
+        --startX: 350%;
+        --delay: .3s;
+        animation: moveX 1s;
+        animation-direction: reverse;
     }
     p{
         max-width: 20.2rem;
@@ -33,6 +40,12 @@ export const Container = styled.section`
         font-weight: 400;
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.LIGHT_300};
+
+        //animation
+        --startX: 350%;
+        animation: moveX 2s;
+        animation-direction: reverse;
+
     }
 
     #banner-img{
@@ -40,14 +53,16 @@ export const Container = styled.section`
         width: 19.1rem;
         height: 14.9rem;
         z-index: 1;
-        bottom: -14rem;
+        bottom: 0;
 
         margin-left: -18.3rem;
         background: url(${backgroundImage}) 0px 0px / 100% 170.598% no-repeat;;
         opacity: 0.8;
 
         transform: scaleX(-1);
+
     }
+
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
         height: 26rem;
@@ -94,7 +109,7 @@ export const Container = styled.section`
             opacity: 0.8;
 
             transform: scaleX(-1);
-        }
 
-    }
+        }
+}
 `;

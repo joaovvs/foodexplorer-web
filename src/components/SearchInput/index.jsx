@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import { FiSearch } from "react-icons/fi"
 
 
-export function SearchInput({ onSearchChange, ...rest}){
+export function SearchInput({ onSearchChange, id,...rest}){
     const [searchTimeout, setSearchTimeout] = useState(null);
 
     const handleSearchChange = (e) =>{
@@ -25,11 +25,11 @@ export function SearchInput({ onSearchChange, ...rest}){
 
     return(
         <Container onChange={handleSearchChange} id="search">
-            <label htmlFor="inputsearch" className="sr-only">Busca</label>
+            <label htmlFor={id} className="sr-only">Busca</label>
             <div>
                 <FiSearch/>
                 <input 
-                    id="inputsearch"
+                    id={id}
                     {...rest}
                 />
             </div>

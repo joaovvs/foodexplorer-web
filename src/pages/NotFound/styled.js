@@ -19,6 +19,9 @@ export const Main = styled.main`
     justify-content: center;
     align-items: center;
 
+    //animation
+    animation: apear 3s;
+
     svg{
         color: ${({theme})=> theme.COLORS.LIGHT_100};
         font-size: 4rem;

@@ -49,6 +49,9 @@ export const Form = styled.form`
     padding: 0 3.2rem;
 
     margin-bottom: 3.3rem;
+
+    //animation
+    animation: apear 3s;
     
     h1{
         font-family: 'Poppins', sans-serif;

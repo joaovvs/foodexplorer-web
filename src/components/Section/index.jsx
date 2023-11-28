@@ -15,14 +15,25 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
     const [loaded, setLoaded] = useState(false)
     const [sliderRef, instanceRef] = useKeenSlider({  
       slides: {
-      perView: 3,
-      spacing: 15,
+        origin: 'center',
+        perView: 3,
+        spacing: 15,
+        center: true,
       },
       initial: 0,
       loop: true,
-      mode: "free-snap",
       slideChanged(slider) {
-        setCurrentSlide(slider.track.details.rel)
+        const details = slider.track.details;
+        const relativeSlide = details.relativeSlide;
+        const slideCount = details.slideCount;
+
+        let centerAdjustment=0;
+
+        if(slideCount>1){
+          centerAdjustment = (1 - (1 / slideCount)) /2;
+        }
+
+        setCurrentSlide(relativeSlide+centerAdjustment);
       },
       created() {
         setLoaded(true)
@@ -53,12 +64,15 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
     <Container {...rest}>
         <h3>{handleSectionTitle()}</h3>
         <div className="navigation-wrapper">
+            <div className="gradient-left"/>
+            <div className="gradient-right"/>
+
             <div id="card-list" ref={sliderRef} className="keen-slider">
                 { foodList.length>0 && 
                   foodList.map((food,index) => {
                       if(food.category.includes(title)){
                        return <Card  
-                        isfavorite={(userFavorites && userFavorites.some(favorite=> favorite.food_id===food.id)).toString()}
+                        isFavorite={(userFavorites && userFavorites.some(favorite=> favorite.food_id===food.id))}
                         key={index}
                         food={food}
                         onFavoriteChange={onFavoriteChange}
@@ -84,7 +98,6 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
                 />
             </>
             )}
-
         </div>
 
     </Container>

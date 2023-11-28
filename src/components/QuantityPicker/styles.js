@@ -22,6 +22,7 @@ export const Container = styled.div`
             display: block;
             font-size: 1.6rem;
             font-family: 'Roboto', sans-serif;
+            text-align: center;
 
             font-weight: 400;
             line-height: 100%;

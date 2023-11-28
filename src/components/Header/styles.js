@@ -62,7 +62,7 @@ export const Container = styled.header`
             display: none;
         }
         
-        
+       
         display: flex;
         position: absolute;
         right: 2.8rem;
@@ -92,7 +92,16 @@ export const Container = styled.header`
             width: 3.2rem;
             height: 3.2rem;
         }
+
     }
+
+    .btn-new{
+        display: none;
+    }
+
+    .btn-sign-out{
+            display:none;
+        }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
         background: ${({theme}) => theme.COLORS.DARK_600};
@@ -127,11 +136,22 @@ export const Container = styled.header`
                 font-family: 'Poppins', sans-serif;
                 font-weight: 500;
                 font-size: 1.4rem;
-                line-height: 2.5rem;
+                line-height: 2.4rem;
                 gap: .8rem;
 
                 width: max-content;
+
             }
+        }
+
+        .btn-new{
+            display: flex;
+            max-width: max-content;
+            line-height: 2.4rem;
+        }
+
+        .btn-sign-out{
+                display:flex;
         }
     }
 

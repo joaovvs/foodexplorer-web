@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     display: flex;
@@ -16,13 +17,12 @@ export const Container = styled.div`
 
     background: ${({theme})=> theme.COLORS.DARK_200};
 
-    &[isfavorite$="true"]{
-        .favorite path{
-            fill:  ${({theme})=> theme.COLORS.LIGHT_300};
-        }
+    .favorite path{
+        fill:  ${({theme,$isFavorite})=> $isFavorite ? theme.COLORS.LIGHT_300: "none"};
     }
+
     
-    .favorite{
+    .favorite, .pencil{
         display: flex;
         position: absolute;
         top: 1.6rem;
@@ -31,6 +31,7 @@ export const Container = styled.div`
         width: 2.4rem;
         height: 2.4rem;
         color: ${({theme})=> theme.COLORS.LIGHT_300};
+        font-size: 2.4rem;
     }
 
     img{
@@ -52,7 +53,53 @@ export const Container = styled.div`
         color: ${({theme}) => theme.COLORS.LIGHT_300};
     }
 
+    p{
+        display: none;
+    }
+
     span{
         color: ${({theme}) => theme.COLORS.CAKE_200};
+    }
+
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+
+        gap: 1.5rem;
+        max-width: 30.4rem;
+        
+        img{
+        width: 17.6rem;
+        height: 17.6rem;
+
+        }
+
+        .btn-food-name{
+            font-size: 2.4rem;
+        }
+
+        p{
+            display: flex;
+            font-family: "Roboto", sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 160%;
+            color: ${({theme}) => theme.COLORS.LIGHT_400};
+        }
+
+        span{
+            font-size: 3.2rem;
+        }
+
+        .picker{
+            display: flex;
+            flex-direction: row;
+            gap: 1.6rem;
+            justify-content: center;
+
+            button{
+                max-width: max-content;
+            }
+        }
+        
     }
 `;

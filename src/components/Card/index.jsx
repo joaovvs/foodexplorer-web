@@ -10,9 +10,8 @@ import { api } from "../../services/api";
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from '../../utils/roles';
-import { useState } from "react";
 
-export function Card({food, isfavorite,onFavoriteChange, ...rest}){
+export function Card({food, isFavorite,onFavoriteChange, ...rest}){
     const navigate = useNavigate();
     const { user } = useAuth();
 
@@ -26,13 +25,13 @@ export function Card({food, isfavorite,onFavoriteChange, ...rest}){
 
 
 
-   return( <Container 
-        {...rest} 
-        isfavorite={isfavorite}
+   return( <Container $isFavorite={isFavorite}
         id={food.id}
+        {...rest} 
         >
 
         { [USER_ROLE.ADMIN].includes(user.role) && <ButtonText 
+            className="pencil"
             icon={PencilSimple} 
             onClick={handleDetails}
         /> }
@@ -54,13 +53,18 @@ export function Card({food, isfavorite,onFavoriteChange, ...rest}){
 
 
 
-        <img src={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage} alt= {`Imagem do prato ${food.name}`}/>
-        <ButtonText onClick={handleDetails}
-            title={`${food.name} >` }/>
+        <img className="food-img" src={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage} alt= {`Imagem do prato ${food.name}`}/>
+        <ButtonText 
+            className="btn-food-name"
+            type="button"
+            title={`${food.name} >` }
+            onClick={handleDetails}
+            />
+        <p>{food.description}</p>
         <span>{Number(food.price).toLocaleString('pt-br', { style: "currency", currency: "BRL" })}</span>
 
       { [USER_ROLE.CUSTOMER].includes(user.role) &&
-        <QuantityPicker title="incluir"/>}
+        <QuantityPicker id={`picker-${food.id}`}title="incluir"/>}
         
     </Container>
     );

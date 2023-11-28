@@ -1,7 +1,6 @@
 import { Container } from "./styles";
-import  logo from "../../assets/logo.svg"
 
-export function Footer({...rest}){
+export function Footer(){
     return(
         <Container>
             

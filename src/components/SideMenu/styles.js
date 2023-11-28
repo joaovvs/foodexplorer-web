@@ -5,7 +5,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 export const Container = styled.aside`
 
     display: none;
-    @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+    @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
 
         display: flex;
         flex-direction: column;

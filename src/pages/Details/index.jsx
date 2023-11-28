@@ -1,4 +1,4 @@
-import { Container, Main } from "./styles";
+import { Container, Main, Section } from "./styles";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SideMenu } from "../../components/SideMenu";
@@ -80,39 +80,41 @@ export function Details(){
 
             <Main>
                 
-          
+                <img className="food-img" src={foodImageUrl} alt={`Imagem de ${food.name}`} />
 
-                <img src={foodImageUrl} alt={`Imagem de ${food.name}`} />
+                <Section>
+                    <div id="food-data">
+                        <h1>{food.name}</h1>
 
-                <section>
-                    <h1>{food.name}</h1>
+                        <p>{food.description}</p>
 
-                    <p>{food.description}</p>
-
-                    <div className="tag-list">
-                        { food.ingredients && food.ingredients.map((ingredient,index)=> 
-                            (
-                            <Tag 
-                                key={String(index)}
-                                title={ingredient}
-                                />
-                           )
-                        )}
+                        <div className="tag-list">
+                            { food.ingredients && food.ingredients.map((ingredient,index)=> 
+                                (
+                                <Tag 
+                                    key={String(index)}
+                                    title={ingredient}
+                                    />
+                            )
+                            )}
+                        </div>
                     </div>
-                </section>
-                
-            { [USER_ROLE.CUSTOMER].includes(user.role) && food.price &&
+                { [USER_ROLE.CUSTOMER].includes(user.role) && food.price &&
                 <QuantityPicker 
                     price={food.price}
-                    title={`pedir`} 
+                    title={`incluir`} 
                     icon={Receipt}/>
-            }
+                }
 
-              {[USER_ROLE.ADMIN].includes(user.role) &&
-               <Button 
-                title="Editar prato"
-                onClick={handleEdit}/>
-               }
+                {[USER_ROLE.ADMIN].includes(user.role) &&
+                <Button 
+                    className="btn-edit"
+                    title="Editar prato"
+                    onClick={handleEdit}/>
+                }
+                </Section>
+                
+  
             </Main>
             <Footer/>
         </Container>

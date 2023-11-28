@@ -18,6 +18,9 @@ export const Container = styled.div`
 
         margin-bottom: 7.3rem;
 
+        //animation
+        animation: apear 1s;
+
         img{
             width: 4.3rem;
             height: 4.3rem;
@@ -61,6 +64,9 @@ export const Form = styled.form`
     align-items: center;
 
     gap: 3.2rem;
+
+    //animation
+    animation: apear 2s;
 
     h2{
         display: none;

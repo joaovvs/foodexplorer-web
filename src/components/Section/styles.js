@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 
 
@@ -8,7 +9,6 @@ export const Container = styled.section`
     width: 100%;
 
     justify-content: center;
- 
 
     h3{
         font-family: 'Poppins', sans-serif;
@@ -24,18 +24,37 @@ export const Container = styled.section`
     #card-list{
         display: flex;
         position: relative;
+        justify-content: center;
+
+        //animation
+        --startX: 250%;
+        animation: moveX 2s;
+        animation-direction: reverse;
 
 
     }
 
-    .gradient{
-            background: linear-gradient(90deg, black 3%, transparent 30% 70%, black 97%);
+    .gradient-left{
+            background: linear-gradient(90deg, black , transparent);
             position: absolute;
             border-radius: .5rem;
             top: 0;
-            width: 100%;
+            width: 33%;
             height: 100%;
             opacity: .8;
+            z-index: 1;
+    }
+
+    .gradient-right{
+            background: linear-gradient(90deg, transparent, black);
+            position: absolute;
+            border-radius: .5rem;
+            top: 0;
+            right: 0;
+            width: 34%;
+            height: 100%;
+            opacity: .8;
+            z-index: 1;
     }
 
     .navigation-wrapper {
@@ -65,17 +84,32 @@ export const Container = styled.section`
     }
 
     .arrow--left {
-        left: 5px;
+        left: .5rem;
     }
 
     .arrow--right {
         left: auto;
-        right: 5px;
+        right: .5rem;
     }
 
     .arrow--disabled {
         fill: ${({theme})=> theme.COLORS.LIGHT_100};
         opacity: 0.5;
+    }
+
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    
+        h3{
+            font-size: 3.2rem;
+        }
+
+
+        .arrow{
+            width: 4rem;
+            height: 4rem;
+        }
+
     }
 `;
 

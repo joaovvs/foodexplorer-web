@@ -16,6 +16,9 @@ export const Container = styled.button`
 
     color: ${({theme}) => theme.COLORS.LIGHT_100};
 
+    &:hover{
+        filter: brightness(0.7);
+    }
 `;
 
 

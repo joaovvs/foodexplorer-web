@@ -43,7 +43,6 @@ export function Home(){
                 //search by foodname
                 const response2 = await api.get(`/foods/?ingredients=${""}&name=${search}`);
                 const searchResult= [...response1.data,...response2.data];
-                console.log(searchResult);
                 setFoodList([...response1.data,...response2.data]);
             }catch(error){
                 if(error.response){
@@ -140,12 +139,12 @@ export function Home(){
             <Header onOpenMenu={()=> setMenuIsOpen(true)} onSearchChange={updateSearch}/>
             <Content>
                 
-                <Banner/>
+            <Banner/>
 
                { sections &&  sections
-                .map( (section,index) => 
+                .map( (section) => 
                     <Section 
-                        key={index} 
+                        key={section} 
                         title={section} 
                         foodList={foodList} 
                         userFavorites={userFavorites}
