@@ -30,7 +30,7 @@ export const Container = styled.div`
 
         border-radius: 0.8rem;
         
-        padding: 1.35rem 1.4rem;
+        padding: 1.6rem 1.6rem;
 
         font-family: 'Roboto', sans-serif;
         

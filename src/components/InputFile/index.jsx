@@ -3,7 +3,7 @@ import { Container } from "./styles";
 
 export function InputFile({icon: Icon, title, filename, ...rest}){
     return(
-        <Container >
+        <Container className="inputFile">
             <label htmlFor="input-file">{title}</label>
             <div >
                 

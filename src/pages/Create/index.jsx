@@ -61,11 +61,12 @@ export function Create(){
         newFood.ingredients=[...newFood.ingredients, newIngredient];
         setFood(newFood);
         setNewIngredient("");
+        console.log(newFood);
     }
 
-    function handleRemoveIngredient(removed){
+    function handleRemoveIngredient(ingredientIndex){
         const newFood = {...food};
-        newFood.ingredients= (newFood.ingredients.filter(ingredient => ingredient!=removed));
+        newFood.ingredients= (newFood.ingredients.filter((ingredient,index) => index!==ingredientIndex));
         setFood(newFood);
     }
 
@@ -112,17 +113,17 @@ export function Create(){
            
             <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
             
-            <nav>
-                <ButtonText 
-                icon={CaretLeft} 
-                title="voltar"
-                onClick={handleBack}/>
-            </nav>
+            <main>
+                <nav>
+                    <ButtonText 
+                    icon={CaretLeft} 
+                    title="voltar"
+                    onClick={handleBack}/>
+                </nav>
+                <Form id="food-create">
+                    <h1>Adicionar prato</h1>
 
-            <Form id="food-create">
-                    <h1>Novo prato</h1>
-
-
+                <div className="food-data">
                     <InputFile 
                         title="Imagem do prato" 
                         icon={UploadSimple}
@@ -132,48 +133,58 @@ export function Create(){
                         />
                     
                     <Input 
+                        id="food-name"
+                        className="food-name"
                         type="text"
                         title="Nome"
-                        className="food-name"
                         placeholder="Ex. Salada Ceasar"
                         onChange={e => setFood({...food, "name": e.target.value})} 
                         required/>
 
-                    <Select title="Categoria" 
+                    <Select className="food-category" title="Categoria" 
                         onChange={e => setFood({...food, "category": e.target.value})}
                     />
+                </div>
 
-                    <div id="ingredients">
-                        <label htmlFor="tag-editor">Ingredientes</label>
+                    <div className="ingredients-and-price">
+                        <div className="ingredients">
+                            <label htmlFor="add-food">Ingredientes</label>
                     
-                        <div id="tags-wrapper"> 
-                            { food.ingredients.map((ingredient, index) => 
-                                (<TagEdit 
-                                    key={String(index)}
-                                    value={ingredient}
-                                    onClick={() => handleRemoveIngredient(ingredient)}
-                                />))
-                                
-                            }
-                            <TagEdit 
-                            placeholder="Adicionar" 
-                            value={newIngredient}
-                            onChange={(e)=> setNewIngredient(e.target.value)}
-                            onClick={handleAddIngredient}
-                            isNew/>
+                            <div className="tags-wrapper"> 
+                                { food.ingredients.map((ingredient, index) => 
+                                    (<TagEdit 
+                                        id={ingredient+String(index)}
+                                        key={String(index)}
+                                        value={ingredient}
+                                        isNew={false}
+                                        onClick={() => handleRemoveIngredient(index)}
+                                    />))
+                                    
+                                }
+                                <TagEdit 
+                                id="add-food"
+                                placeholder="Adicionar" 
+                                value={newIngredient}
+                                onChange={(e)=> setNewIngredient(e.target.value)}
+                                onClick={handleAddIngredient}
+                                isNew/>
+                            </div>
                         </div>
 
-                    </div>
-                    <Input 
+                        <Input 
+                        id="food-price"
+                        className="food-price"
                         type="text"
                         title="Preço"
-                        className="food-price"
                         placeholder="R$ 00,00"
                         onChange={e => setFood({...food, "price": e.target.value})} 
                         required/>
+                    </div>
+                    
                     <TextArea 
-                        label="Descrição"
+                        id="food-description"
                         className="food-description"
+                        label="Descrição"
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={e => setFood({...food, "description": e.target.value})} 
                         required/>
@@ -183,7 +194,8 @@ export function Create(){
                         onClick={handleSaveFood}
                         title="Salvar alterações" 
                         htmlFor="food-create" disabled={!food.name || !food.price || !food.category || !food.description || !food.ingredients.length>0}/>
-            </Form>
+                </Form>
+            </main>
             <Footer/>
         </Container>
     );

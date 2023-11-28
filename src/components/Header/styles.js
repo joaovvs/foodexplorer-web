@@ -52,7 +52,7 @@ export const Container = styled.header`
         
     }
 
-    #search{
+    .header-search{
         display: none;
     }
 
@@ -120,9 +120,14 @@ export const Container = styled.header`
             gap: 1rem;
         }
 
-        #search{
-            display: block;
+        .header-search{
+            display: flex;
+            width: 100%;
+            align-items: center;
+
+
         }
+
         #cart-wrapper{
             position: unset;
 

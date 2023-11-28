@@ -3,7 +3,7 @@ import { Container } from "./styles";
 
 export function Input({icon: Icon,id, title, ...rest}){
     return(
-        <Container >
+        <Container {...rest}>
             <label htmlFor={id}>{title}</label>
             <div>
                 {Icon && <Icon />}

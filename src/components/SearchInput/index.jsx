@@ -24,15 +24,13 @@ export function SearchInput({ onSearchChange, id,...rest}){
     };
 
     return(
-        <Container onChange={handleSearchChange} id="search">
+        <Container onChange={handleSearchChange} className={id}>
             <label htmlFor={id} className="sr-only">Busca</label>
-            <div>
                 <FiSearch/>
                 <input 
                     id={id}
                     {...rest}
                 />
-            </div>
         </Container>
 
     )
