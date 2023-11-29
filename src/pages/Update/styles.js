@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
     display: grid;
     height: 100vh;
@@ -28,11 +30,16 @@ export const Container = styled.div`
                 font-size: 2.2rem;
             }
         }
-
     }
 
-   
+        @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+            main{
+                padding: 4rem 12.3rem;
+            }
 
+         }
+
+     
 `;
 
 export const Form = styled.form`
@@ -48,7 +55,6 @@ export const Form = styled.form`
     
     padding: 0 3.2rem;
 
-    margin-bottom: 3.3rem;
 
     //animation
     animation: apear 3s;
@@ -68,18 +74,35 @@ export const Form = styled.form`
             margin-bottom: 1.6rem;
     }
 
+    .food-data{
+        display: flex;
+        flex-direction: column;
 
+        gap: 1.6rem;
+    }
 
-    #ingredients{
+    .ingredients-and-price{
+        display: flex;
+        flex-direction: column;
+
+        gap: 1.6rem;
+    }
+    .ingredients{
         display: flex;
         flex-direction: column;
 
         gap: 1.6rem;
 
+        width: 100%;
+
+        label{
+            font-size: 1.6rem;
+            color: ${({theme})=> theme.COLORS.LIGHT_400};
+        }
         
     }
 
-    #tags-wrapper{
+    .tags-wrapper{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -90,13 +113,75 @@ export const Form = styled.form`
 
         border-radius: 0.8rem;
 
-        padding: 0.8rem;
+        padding: 0.4rem;
         gap: 1.6rem;
+
+        input{
+            display: flex;
+            flex:1;
+        }
 
     }
 
     .btn-wrapper{
         display: flex;
         gap: 3.2rem;
+    }
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+
+        align-items: flex-start;
+
+        gap: 3.2rem;
+
+        h1{
+            font-size: 3.2rem;
+        }
+
+        .food-data{
+            flex-direction: row;
+            width: 100%;
+
+            gap: 3.2rem;
+
+            .inputFile{
+                display: flex;
+                width: fit-content;
+
+                label{
+                    width: max-content;
+                }
+            }
+
+        }
+
+
+        .ingredients-and-price{
+            flex-direction: row;
+            width: 100%;
+
+            align-items: center;
+
+            gap: 3.2rem;
+
+            .food-price{            
+                font-size: 1.6rem;
+                line-height: 100%;
+                width: 40%;
+            }
+
+        }
+
+        .food-description{
+            width: 100%;
+        }
+
+        .btn-wrapper{
+            align-self: last baseline;
+            button{
+                display: flex;
+                width: max-content;
+            }
+        }
     }
 `;

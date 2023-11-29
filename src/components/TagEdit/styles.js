@@ -13,8 +13,6 @@ export const Container = styled.div`
     border: ${({theme, $isNew }) => $isNew ? `2px dashed ${theme.COLORS.LIGHT_500}` : "none"};
 
     input{
-        display: flex;
-        flex: 1;
         background: transparent;
         border: none;
         color: ${({theme}) => theme.COLORS.LIGHT_100};

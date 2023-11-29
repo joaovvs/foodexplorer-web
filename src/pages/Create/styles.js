@@ -116,7 +116,6 @@ export const Form = styled.form`
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
 
-
         align-items: center;
 
         gap: 3.2rem;

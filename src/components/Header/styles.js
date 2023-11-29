@@ -10,7 +10,7 @@ export const Container = styled.header`
     align-items: center;
 
     padding: 6.4rem 2.8rem 2.4rem;
-    width: 100vw;
+    width: 100%;
 
     background: ${({theme}) => theme.COLORS.DARK_700};
 

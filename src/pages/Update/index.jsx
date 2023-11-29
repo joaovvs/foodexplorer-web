@@ -45,14 +45,18 @@ export function Update(){
     }
 
     function handleAddIngredient(){
+        if(!newIngredient){
+            return alert("Digite o nome do ingrediente");
+        }
         const newFood = {...food};
         newFood.ingredients=[...newFood.ingredients, newIngredient];
         setFood(newFood);
         setNewIngredient("");
     }
-    function handleRemoveIngredient(removed){
+
+    function handleRemoveIngredient(ingredientIndex){
         const newFood = {...food};
-        newFood.ingredients= (newFood.ingredients.filter(ingredient => ingredient!=removed));
+        newFood.ingredients= (newFood.ingredients.filter((ingredient,index) => index!==ingredientIndex));
         setFood(newFood);
     }
 
@@ -146,75 +150,83 @@ export function Update(){
 
            
             <Header onOpenMenu={()=> setMenuIsOpen(true)}/>
-            
-            <nav>
-                <ButtonText 
-                icon={CaretLeft} 
-                title="voltar"
-                onClick={handleBack}/>
-            </nav>
+            <main>
+                <nav>
+                    <ButtonText 
+                    icon={CaretLeft} 
+                    title="voltar"
+                    onClick={handleBack}/>
+                </nav>
 
-            <Form id="food-update">
+                <Form id="food-update">
                     <h1>Editar prato</h1>
 
-
-                    <InputFile 
-                        title="Imagem do prato" 
-                        icon={UploadSimple}
-                        filename={updatedFoodImage.image?.name ? updatedFoodImage.image.name: food.image}
-                        onChange={handleUpload} 
-                        accept="image/jpeg, image/png, image/gif, image/bmp"
-                        />
+                    <div className="food-data">
+                        <InputFile 
+                            title="Imagem do prato" 
+                            icon={UploadSimple}
+                            filename={updatedFoodImage.image?.name ? updatedFoodImage.image.name: food.image}
+                            onChange={handleUpload} 
+                            accept="image/jpeg, image/png, image/gif, image/bmp"
+                            />
                     
-                    <Input 
-                        type="text"
-                        title="Nome"
-                        id="food-name"
-                        placeholder="Ex. Salada Ceasar"
-                        value={food.name}
-                        onChange={e => setFood({...food, "name": e.target.value})} 
+                        <Input 
+                            id="food-name"
+                            className="food-name"
+                            type="text"
+                            title="Nome"
+                            placeholder="Ex. Salada Ceasar"
+                            value={food.name}
+                            onChange={e => setFood({...food, "name": e.target.value})} 
+                            />
+
+                        <Select 
+                            className="food-category" 
+                            title="Categoria" 
+                            value={food.category} 
+                            onChange={e => setFood({...food, "category": e.target.value})}
                         />
-
-                    <Select title="Categoria" 
-                        value={food.category} 
-                        onChange={e => setFood({...food, "category": e.target.value})}
-                    />
-
-                    <div id="ingredients-wrapper">
-                        <h3>Ingredientes</h3>
-                    
-                        <div id="tags-wrapper"> 
-                            { food.ingredients.map((ingredient, index) => 
-                                (<TagEdit 
-                                    id={ingredient}
-                                    key={String(index)}
-                                    value={ingredient}
-                                    onClick={() => handleRemoveIngredient(ingredient)}
-                                />))
-                                
-                            }
-                            <TagEdit 
-                                id="new-tag"
-                                placeholder="Adicionar" 
-                                value={newIngredient}
-                                onChange={(e)=> setNewIngredient(e.target.value)}
-                                onClick={handleAddIngredient}
-                                isNew
-                                />
-                        </div>
-
                     </div>
+                    <div className="ingredients-and-price">
+                        <div className="ingredients">
+                            <label htmlFor="add-ingredient">Ingredientes</label>
+                        
+                            <div className="tags-wrapper"> 
+                                { food.ingredients.map((ingredient, index) => 
+                                    (<TagEdit 
+                                        id={ingredient+String(index)}
+                                        key={String(index)}
+                                        value={ingredient}
+                                        isNew={false}
+                                        onClick={() => handleRemoveIngredient(index)}
+                                    />))
+                                    
+                                }
+                                <TagEdit 
+                                    id="add-ingredient"
+                                    placeholder="Adicionar" 
+                                    value={newIngredient}
+                                    onChange={(e)=> setNewIngredient(e.target.value)}
+                                    onClick={handleAddIngredient}
+                                    isNew
+                                    />
+                            </div>
+                        </div>
                     <Input 
+                        id="food-price"
+                        className="food-price"
                         type="text"
                         title="Preço"
-                        id="food-price"
                         value={food.price}
                         placeholder="R$ 00,00"
                         onChange={e => setFood({...food, "price": e.target.value})} 
                         />
+
+                </div>
                     <TextArea 
-                        label="Descrição"
                         id="food-description"
+                        className="food-description"
+                        label="Descrição"
                         value={food.description}
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={e => setFood({...food, "description": e.target.value})} 
@@ -233,7 +245,10 @@ export function Update(){
                             onClick={handleUpdate}
                         />
                     </div>
-            </Form>
+
+            
+                </Form>
+            </main>
             <Footer/>
         </Container>
     );

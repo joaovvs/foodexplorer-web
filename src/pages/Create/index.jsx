@@ -61,7 +61,6 @@ export function Create(){
         newFood.ingredients=[...newFood.ingredients, newIngredient];
         setFood(newFood);
         setNewIngredient("");
-        console.log(newFood);
     }
 
     function handleRemoveIngredient(ingredientIndex){
@@ -123,32 +122,35 @@ export function Create(){
                 <Form id="food-create">
                     <h1>Adicionar prato</h1>
 
-                <div className="food-data">
-                    <InputFile 
-                        title="Imagem do prato" 
-                        icon={UploadSimple}
-                        filename={food?.image?.name}
-                        onChange={handleUpload} 
-                        accept="image/jpeg, image/png, image/gif, image/bmp"
-                        />
-                    
-                    <Input 
-                        id="food-name"
-                        className="food-name"
-                        type="text"
-                        title="Nome"
-                        placeholder="Ex. Salada Ceasar"
-                        onChange={e => setFood({...food, "name": e.target.value})} 
-                        required/>
+                    <div className="food-data">
+                        <InputFile 
+                            title="Imagem do prato" 
+                            icon={UploadSimple}
+                            filename={food?.image?.name}
+                            onChange={handleUpload} 
+                            accept="image/jpeg, image/png, image/gif, image/bmp"
+                            />
+                        
+                        <Input 
+                            id="food-name"
+                            className="food-name"
+                            type="text"
+                            title="Nome"
+                            placeholder="Ex. Salada Ceasar"
+                            onChange={e => setFood({...food, "name": e.target.value})} 
+                            
+                            required/>
 
-                    <Select className="food-category" title="Categoria" 
-                        onChange={e => setFood({...food, "category": e.target.value})}
-                    />
-                </div>
+                        <Select 
+                            className="food-category" 
+                            title="Categoria"
+                            onChange={e => setFood({...food, "category": e.target.value})}
+                        />
+                    </div>
 
                     <div className="ingredients-and-price">
                         <div className="ingredients">
-                            <label htmlFor="add-food">Ingredientes</label>
+                            <label htmlFor="add-ingredient">Ingredientes</label>
                     
                             <div className="tags-wrapper"> 
                                 { food.ingredients.map((ingredient, index) => 
@@ -158,11 +160,10 @@ export function Create(){
                                         value={ingredient}
                                         isNew={false}
                                         onClick={() => handleRemoveIngredient(index)}
-                                    />))
-                                    
+                                    />))    
                                 }
                                 <TagEdit 
-                                id="add-food"
+                                id="add-ingredient"
                                 placeholder="Adicionar" 
                                 value={newIngredient}
                                 onChange={(e)=> setNewIngredient(e.target.value)}
@@ -190,10 +191,11 @@ export function Create(){
                         required/>
 
                     <Button 
-                        type="button"
+                        type="submit"
                         onClick={handleSaveFood}
                         title="Salvar alterações" 
-                        htmlFor="food-create" disabled={!food.name || !food.price || !food.category || !food.description || !food.ingredients.length>0}/>
+                        htmlFor="food-create" 
+                        disabled={!food.name || !food.price || !food.category || !food.description || !food.ingredients.length>0}/>
                 </Form>
             </main>
             <Footer/>

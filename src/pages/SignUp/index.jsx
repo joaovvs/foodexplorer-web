@@ -55,7 +55,7 @@ export function SignUp(){
                 onChange={e => setName(e.target.value)} 
             />
             <Input 
-                type="text"
+                type="email"
                 title="Email" 
                 placeholder="Exemplo: exemplo@exemplo.com.br"
                 onChange={e => setEmail(e.target.value)} 
