@@ -9,9 +9,8 @@ export function TagEdit({value, isNew,id, onClick,placeholder,...rest}){
                     id={id}
                     type="text"
                     value={value}
-                    readOnly={!isNew}
-                    placeholder={placeholder} 
-                    onChange={e=> e.target.value}
+                    placeholder={placeholder}
+                    {...rest}
                     />
                 <button
                     type="button"

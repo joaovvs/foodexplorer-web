@@ -46,7 +46,6 @@ export function Create(){
 
     function handleUpload(event){
         const file = event.target.files[0];
-        console.log(file);
         if(file){
             setFood({...food, "image": file})
         }
@@ -144,6 +143,7 @@ export function Create(){
                         <Select 
                             className="food-category" 
                             title="Categoria"
+                            value={food.category}
                             onChange={e => setFood({...food, "category": e.target.value})}
                         />
                     </div>
@@ -158,7 +158,7 @@ export function Create(){
                                         id={ingredient+String(index)}
                                         key={String(index)}
                                         value={ingredient}
-                                        isNew={false}
+                                        readOnly={true}
                                         onClick={() => handleRemoveIngredient(index)}
                                     />))    
                                 }
@@ -185,7 +185,7 @@ export function Create(){
                     <TextArea 
                         id="food-description"
                         className="food-description"
-                        label="Descrição"
+                        title="Descrição"
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={e => setFood({...food, "description": e.target.value})} 
                         required/>

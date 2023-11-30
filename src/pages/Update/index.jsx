@@ -177,14 +177,14 @@ export function Update(){
                             title="Nome"
                             placeholder="Ex. Salada Ceasar"
                             value={food.name}
-                            onChange={e => setFood({...food, "name": e.target.value})} 
+                            onChange={(e) => setFood({...food, "name": e.target.value})} 
                             />
 
                         <Select 
                             className="food-category" 
                             title="Categoria" 
                             value={food.category} 
-                            onChange={e => setFood({...food, "category": e.target.value})}
+                            onChange={(e) => setFood({...food, "category": e.target.value})}
                         />
                     </div>
                     <div className="ingredients-and-price">
@@ -192,24 +192,24 @@ export function Update(){
                             <label htmlFor="add-ingredient">Ingredientes</label>
                         
                             <div className="tags-wrapper"> 
-                                { food.ingredients.map((ingredient, index) => 
+                               { food.ingredients.map((ingredient, index) => 
                                     (<TagEdit 
                                         id={ingredient+String(index)}
                                         key={String(index)}
                                         value={ingredient}
-                                        isNew={false}
+                                        readOnly={true}
                                         onClick={() => handleRemoveIngredient(index)}
                                     />))
                                     
                                 }
-                                <TagEdit 
+                               { <TagEdit 
                                     id="add-ingredient"
                                     placeholder="Adicionar" 
                                     value={newIngredient}
                                     onChange={(e)=> setNewIngredient(e.target.value)}
                                     onClick={handleAddIngredient}
                                     isNew
-                                    />
+                            />}
                             </div>
                         </div>
                     <Input 
@@ -217,16 +217,16 @@ export function Update(){
                         className="food-price"
                         type="text"
                         title="Preço"
-                        value={food.price}
+                        defaultValue={food.price}
                         placeholder="R$ 00,00"
-                        onChange={e => setFood({...food, "price": e.target.value})} 
+                        onChange={(e) => setFood({...food, "price": e.target.value})} 
                         />
-
+                               
                 </div>
                     <TextArea 
                         id="food-description"
                         className="food-description"
-                        label="Descrição"
+                        title="Descrição"
                         value={food.description}
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={e => setFood({...food, "description": e.target.value})} 
