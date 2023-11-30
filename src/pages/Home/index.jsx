@@ -14,7 +14,14 @@ export function Home(){
     const [foodList,setFoodList] = new useState([]);
     const [sections, setSections] = new useState([]);
     const [userFavorites, setUserFavorites] = new useState([]);
-    const[search, setSearch] = useState("");
+    const   [search, setSearch] = useState("");
+
+    //define sections order
+    const order = { refeição: 1, sobremesa: 2, bebida: 3 };
+
+    function compareSections(item1, item2){
+        return order[item1] - order[item2];
+    }
 
     const updateSearch = (newSearch) => {
         setSearch(newSearch);
@@ -117,6 +124,10 @@ export function Home(){
             }
             });
         }
+        //order sections refeição > sobremesa > bebida 
+        existentSections.sort(compareSections);
+
+
         setSections(existentSections);
     },[foodList]);
    

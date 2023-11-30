@@ -26,16 +26,17 @@ export function Create(){
     const { user } = useAuth();
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
     const [food, setFood] = new useState({
+        id: "",
         name: "",
         image: "",
         category: "",
         price: "",
         ingredients: [],
         description: "",
-
     });
 
     const [newIngredient, setNewIngredient] = useState("");
+    const [foodImage, setFoodImage] = useState({});
 
 
     const navigate = useNavigate();
@@ -47,10 +48,12 @@ export function Create(){
     function handleUpload(event){
         const file = event.target.files[0];
         if(file){
-            setFood({...food, "image": file})
+            setFoodImage({"image": file})
         }
-        else setFood({...food, "image": ""});
+        else setFoodImage({"image": ""});
     }
+
+
 
     function handleAddIngredient(){
         if(!newIngredient){
@@ -79,15 +82,15 @@ export function Create(){
         try {
             const newFood = await api.post("/foods", food);
             setFood(newFood.data);
-                // food image upload 
-                if(food.image){
-                    const fileUploadForm = new FormData();
-                    fileUploadForm.append("image", food.image);
-                    const response= await api.patch(`foods/image/${newFood.data.id}`, fileUploadForm);
-                    setFood({...food, "image": response.data.image});
-                }
+            if(foodImage){
+                const fileUploadForm = new FormData();
+                fileUploadForm.append("image", foodImage.image);
+                const response= await api.patch(`foods/image/${newFood.data.id}`, fileUploadForm);
+                setFood({...food, "image": response.data.image});
+            }
             alert("Prato criado com sucesso!");
             navigate(`/details/${newFood.data.id}`);
+
         } catch (error) {
             if(error.response){
                 alert(error.response.data.message)
@@ -97,7 +100,9 @@ export function Create(){
             }
             
         }
-
+        // food image upload 
+        console.log(food);
+       
  
     }
 
@@ -125,7 +130,7 @@ export function Create(){
                         <InputFile 
                             title="Imagem do prato" 
                             icon={UploadSimple}
-                            filename={food?.image?.name}
+                            filename={foodImage?.image?.name}
                             onChange={handleUpload} 
                             accept="image/jpeg, image/png, image/gif, image/bmp"
                             />
@@ -191,7 +196,7 @@ export function Create(){
                         required/>
 
                     <Button 
-                        type="submit"
+                        type="button"
                         onClick={handleSaveFood}
                         title="Salvar alterações" 
                         htmlFor="food-create" 

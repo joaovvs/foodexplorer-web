@@ -48,9 +48,13 @@ export const Container = styled.section`
     .wrapper {
         display: flex;
         overflow: hidden;
+
+        width: 100%;
     }
 
-    
+    .swiper{
+        width: 100%;
+    }
 
     .swiper-button-prev, .swiper-button-next {
         width: 3rem;

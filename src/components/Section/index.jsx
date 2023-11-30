@@ -34,8 +34,6 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
     <Container {...rest}>
         <h3>{handleSectionTitle()}</h3>
         <div className="wrapper">
-            
-
             <Swiper 
               slidesPerView={3} 
               loop={true} 
@@ -50,13 +48,14 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
                 { foodList.length>0 && 
                   foodList.map((food,index) => {
                       if(food.category.includes(title)){
-                       return <SwiperSlide key={index}><Card  
-                        isFavorite={(userFavorites && userFavorites.some(favorite=> favorite.food_id===food.id))}
-                        key={index}
-                        food={food}
-                        onFavoriteChange={onFavoriteChange}
-                        />
-                        </SwiperSlide>
+                       return (<SwiperSlide key={index}>
+                          <Card  
+                            isFavorite={(userFavorites && userFavorites.some(favorite=> favorite.food_id===food.id))}
+                            key={index}
+                            food={food}
+                            onFavoriteChange={onFavoriteChange}
+                          />
+                        </SwiperSlide>)
                       }
                   })
                 }

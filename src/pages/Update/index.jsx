@@ -108,9 +108,7 @@ export function Update(){
         else setUpdatedFoodImage({"image": ""});
     }
 
-    async function updateImage(){
-        console.log(food.image);
-        console.log(updatedFoodImage.image);
+    async function uploadImage(){
        if(food.image != updatedFoodImage.image){
             const fileUploadForm = new FormData();
             fileUploadForm.append("image", updatedFoodImage.image);
@@ -121,7 +119,7 @@ export function Update(){
 
     async function handleUpdate(){
         try{
-            updatedFoodImage.image && await updateImage();
+            updatedFoodImage.image && await uploadImage();
             await api.put("/foods", food);
             alert("Prato atualizado com sucesso!");
             navigate(-1);
