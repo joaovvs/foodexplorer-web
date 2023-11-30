@@ -65,9 +65,8 @@ export function Card({food, isFavorite,onFavoriteChange, ...rest}){
         <p>{food.description}</p>
         <span>{Number(food.price).toLocaleString('pt-br', { style: "currency", currency: "BRL" })}</span>
 
-      { [USER_ROLE.CUSTOMER].includes(user.role) &&
+        { [USER_ROLE.CUSTOMER].includes(user.role) &&
         <QuantityPicker id={`picker-${food.id}`}title="incluir"/>}
-        
     </Container>
     );
 }

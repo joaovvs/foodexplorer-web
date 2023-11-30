@@ -8,7 +8,7 @@ export const Container = styled.div`
     position: relative;
     gap: 1.2rem;
 
-
+    
 
     align-items: center;
     justify-content: center;
@@ -61,11 +61,15 @@ export const Container = styled.div`
         color: ${({theme}) => theme.COLORS.CAKE_200};
     }
 
+    .fill-card-space{
+        height: 100%;
+    }
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-
         gap: 1.5rem;
         
+        height: 46.2rem;
+
         img{
         width: 17.6rem;
         height: 17.6rem;
@@ -80,6 +84,13 @@ export const Container = styled.div`
 
         p{
             display: flex;
+            width: 100%;
+
+            max-height: 4.4rem;
+
+            overflow: hidden;
+            justify-content: center;
+            text-align: center;
             font-family: "Roboto", sans-serif;
             font-size: 1.4rem;
             font-weight: 400;

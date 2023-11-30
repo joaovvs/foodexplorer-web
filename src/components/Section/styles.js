@@ -30,7 +30,7 @@ export const Container = styled.section`
             width: 33%;
             height: 100%;
             opacity: .8;
-            z-index: 1;
+            z-index: 2;
     }
 
     .gradient-right{
@@ -42,16 +42,12 @@ export const Container = styled.section`
             width: 34%;
             height: 100%;
             opacity: .8;
-            z-index: 1;
+            z-index: 2;
     }
 
     .wrapper {
-        position: relative;
+        display: flex;
         overflow: hidden;
-
-        .swiper-wrapper{
-            z-index: 0;
-        }
     }
 
     
@@ -62,7 +58,7 @@ export const Container = styled.section`
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 2;
+        z-index: 3;
         cursor: pointer;
 
         
