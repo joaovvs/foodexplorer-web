@@ -25,10 +25,12 @@ export function Card({food, isFavorite,onFavoriteChange, ...rest}){
 
 
 
-   return( <Container $isFavorite={isFavorite}
-        id={food.id}
-        {...rest} 
-        >
+   return( 
+    <Container 
+            $isFavorite={isFavorite}
+            id={food.id}
+            {...rest} 
+    >
 
         { [USER_ROLE.ADMIN].includes(user.role) && <ButtonText 
             className="pencil"

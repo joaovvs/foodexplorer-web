@@ -9,9 +9,6 @@ export const Container = styled.div`
 
     gap: 1.6rem;
 
-
-
-
     >label{
         font-size: 1.6rem;
         color: ${({theme}) => theme.COLORS.LIGHT_400};
@@ -35,19 +32,20 @@ export const Container = styled.div`
         }
 
         input{
-            border: none;
 
+            border: none;
+            flex:1;
             border-radius: .8rem;
+
         
             background: ${({theme}) => theme.COLORS.DARK_900};
 
-            color: ${({theme}) => theme.COLORS.LIGHT_400};
-
-
+            color: ${({theme}) => theme.COLORS.LIGHT_400};x
 
             &::placeholder{
                 color: ${({theme}) => theme.COLORS.LIGHT_500};
             }
+
         }
     }
 

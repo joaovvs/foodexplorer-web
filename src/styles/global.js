@@ -10,7 +10,7 @@ export default createGlobalStyle`
 
     :root{
         font-size: 62.5%;
-        
+        --swiper-theme-color: ${({theme})=> theme.COLORS.LIGHT_300};
 
         @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
             font-size: 46.875%;

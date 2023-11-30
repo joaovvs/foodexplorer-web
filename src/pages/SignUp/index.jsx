@@ -53,17 +53,21 @@ export function SignUp(){
                 title="Seu nome" 
                 placeholder="Exemplo: Maria da Silva"
                 onChange={e => setName(e.target.value)} 
+                required 
             />
             <Input 
                 type="email"
                 title="Email" 
                 placeholder="Exemplo: exemplo@exemplo.com.br"
-                onChange={e => setEmail(e.target.value)} 
+                onChange={e => setEmail(e.target.value)}
+                required  
             />
             <Input type="password" 
                 title="Senha" 
                 placeholder="No mínimo 6 caracteres"
-                onChange={e => setPassword(e.target.value)} 
+                minLength="6"
+                onChange={e => setPassword(e.target.value)}
+                required 
             />
             
             <Button 

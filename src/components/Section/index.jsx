@@ -1,7 +1,12 @@
 import { Container } from "./styles";
 import { Card } from "../Card";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css"
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import { useEffect, useState } from "react";
 import { CaretRight, CaretLeft } from "@phosphor-icons/react";
 import { api } from "../../services/api";
@@ -13,32 +18,6 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
     //keenSlider init
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loaded, setLoaded] = useState(false)
-    const [sliderRef, instanceRef] = useKeenSlider({  
-      slides: {
-        origin: 'center',
-        perView: 3,
-        spacing: 15,
-        center: true,
-      },
-      initial: 0,
-      loop: true,
-      slideChanged(slider) {
-        const details = slider.track.details;
-        const relativeSlide = details.relativeSlide;
-        const slideCount = details.slideCount;
-
-        let centerAdjustment=0;
-
-        if(slideCount>1){
-          centerAdjustment = (1 - (1 / slideCount)) /2;
-        }
-
-        setCurrentSlide(relativeSlide+centerAdjustment);
-      },
-      created() {
-        setLoaded(true)
-      },
-    });
 
 
 
@@ -63,25 +42,33 @@ export function Section({title, foodList,userFavorites,onFavoriteChange,...rest}
     return(
     <Container {...rest}>
         <h3>{handleSectionTitle()}</h3>
-        <div className="navigation-wrapper">
+        <div className="wrapper">
             <div className="gradient-left"/>
             <div className="gradient-right"/>
 
-            <div id="card-list" ref={sliderRef} className="keen-slider">
+            <Swiper 
+              slidesPerView={3} 
+              loop={true} 
+              centeredSlides={true} 
+              navigation={true} 
+              modules={[Navigation]}
+              spaceBetween={15}
+              className="foodSwiper"
+              >
                 { foodList.length>0 && 
                   foodList.map((food,index) => {
                       if(food.category.includes(title)){
-                       return <Card  
+                       return <SwiperSlide><Card  
                         isFavorite={(userFavorites && userFavorites.some(favorite=> favorite.food_id===food.id))}
                         key={index}
                         food={food}
                         onFavoriteChange={onFavoriteChange}
-                        className={`keen-slider__slide number-slide${index}`}
                         />
+                        </SwiperSlide>
                       }
                   })
                 }
-            </div>
+            </Swiper>
             {loaded && instanceRef.current && (
             <>
                 <Arrow

@@ -7,8 +7,10 @@ export function Input({icon: Icon,id, title, ...rest}){
             <label htmlFor={id}>{title}</label>
                 <div>
                     {Icon && <Icon />}
-                    <input id={id} {...rest}></input>
+                    <input id={id} {...rest}/>
                 </div>
+
+               
             
         </Container>
     )

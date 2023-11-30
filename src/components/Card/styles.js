@@ -8,7 +8,7 @@ export const Container = styled.div`
     position: relative;
     gap: 1.2rem;
 
-    width: fit-content;
+
 
     align-items: center;
     justify-content: center;
@@ -65,11 +65,12 @@ export const Container = styled.div`
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
 
         gap: 1.5rem;
-        max-width: 30.4rem;
         
         img{
         width: 17.6rem;
         height: 17.6rem;
+
+        border-radius: 50%;
 
         }
 

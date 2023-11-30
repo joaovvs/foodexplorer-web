@@ -32,7 +32,7 @@ export function SignIn(){
             <img src={logo} alt="Logo" />
             <h1>food explorer</h1>
         </header>
-        <Form>
+        <Form id="signin" >
             <h2>Faça login</h2>
             <Input 
                 type="email"
@@ -44,13 +44,16 @@ export function SignIn(){
             type="password" 
                 title="Senha" 
                 placeholder="No mínimo 6 caracteres"
+                minLength="6"
                 onChange={e => setPassword(e.target.value)} 
                 />
             
             <Button 
+                htmlFor="signin"
                 type="button" 
                 title="Entrar"
-                onClick={handleSignIn}/>
+                onClick={handleSignIn}
+                />
 
             <ButtonText 
                 type="button" 

@@ -21,18 +21,6 @@ export const Container = styled.section`
         color: ${({theme})=> theme.COLORS.LIGHT_300};
     }
 
-    #card-list{
-        display: flex;
-        position: relative;
-        justify-content: center;
-
-        //animation
-        --startX: 250%;
-        animation: moveX 2s;
-        animation-direction: reverse;
-
-
-    }
 
     .gradient-left{
             background: linear-gradient(90deg, black , transparent);
@@ -57,19 +45,24 @@ export const Container = styled.section`
             z-index: 1;
     }
 
-    .navigation-wrapper {
+    .wrapper {
         position: relative;
         overflow: hidden;
+
+        .swiper-wrapper{
+            z-index: 0;
+        }
     }
+
     
 
-    .arrow {
+    .swiper-button-prev, .swiper-button-next {
         width: 3rem;
         height: 3rem;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 1;
+        z-index: 2;
         cursor: pointer;
 
         
@@ -83,20 +76,6 @@ export const Container = styled.section`
         }
     }
 
-    .arrow--left {
-        left: .5rem;
-    }
-
-    .arrow--right {
-        left: auto;
-        right: .5rem;
-    }
-
-    .arrow--disabled {
-        fill: ${({theme})=> theme.COLORS.LIGHT_100};
-        opacity: 0.5;
-    }
-
 
     @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     
@@ -105,7 +84,7 @@ export const Container = styled.section`
         }
 
 
-        .arrow{
+        .swiper-button-prev, .swiper-button-next{
             width: 4rem;
             height: 4rem;
         }
