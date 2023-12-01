@@ -19,7 +19,6 @@ export const Container = styled.section`
 
     margin-bottom: 3.8rem;
 
-    animation: apear 1s;
     
 
     h2{
@@ -28,11 +27,10 @@ export const Container = styled.section`
         font-weight: 600;
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.LIGHT_300};
-        //animations
-        --startX: 350%;
-        --delay: .3s;
-        animation: moveX 1s;
-        animation-direction: reverse;
+
+        //animation
+        animation: blur 0.5s ease-out;
+	    -webkit-animation: blur 0.5s ease-out;
     }
     p{
         max-width: 20.2rem;
@@ -40,11 +38,11 @@ export const Container = styled.section`
         font-weight: 400;
         line-height: 140%;
         color: ${({theme}) => theme.COLORS.LIGHT_300};
+        
 
         //animation
-        --startX: 350%;
-        animation: moveX 2s;
-        animation-direction: reverse;
+        animation: blur 1s ease-out;
+
 
     }
 
@@ -60,6 +58,8 @@ export const Container = styled.section`
         opacity: 0.8;
 
         transform: scaleX(-1);
+
+        animation: blur 0.5s ease-out;
 
     }
 
@@ -85,14 +85,12 @@ export const Container = styled.section`
             font-size: 4rem;
             font-weight: 500;
             line-height: 140%;
-            color: ${({theme}) => theme.COLORS.LIGHT_300};
         }
         p{
             max-width: 100%;
             font-size: 1.6rem;
             font-weight: 400;
             line-height: 140%;
-            color: ${({theme}) => theme.COLORS.LIGHT_300};
             
         }
 

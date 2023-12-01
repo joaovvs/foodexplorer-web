@@ -41,14 +41,19 @@ export default createGlobalStyle`
         transition: filter 0.2s;
         border: none;
         text-decoration: none;
+
+
     }
 
     a:hover{
         filter: brightness(0.7);
+
+       
     }
 
     .food-img:hover{
         filter: hue-rotate(7deg) brightness(1.5) saturate(200%);
+
     }
 
     
@@ -82,9 +87,9 @@ export default createGlobalStyle`
     }
 
     @keyframes moveY{
-    100%{
-        transform: translateY(var(--startY));
-    }
+        100%{
+            transform: translateY(var(--startY));
+        }
     }
     @keyframes apear{
         0%{
@@ -93,6 +98,11 @@ export default createGlobalStyle`
         100%{ 
             opacity: 1;
         }
+    }
+
+    @keyframes blur {
+	0%		{filter: blur(10rem);}
+
     }
 
 `;
