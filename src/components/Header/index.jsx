@@ -30,6 +30,10 @@ export function Header({onOpenMenu,onSearchChange}){
         navigate("/");
     }
 
+    function handleShowShopCart(){
+        alert("to do");
+    }
+
     return(
         <Container >    
             <Menu className="menu" onClick={onOpenMenu}>
@@ -56,12 +60,14 @@ export function Header({onOpenMenu,onSearchChange}){
                         className="btn-cart-desktop"
                         type="button"
                         icon={Receipt}
-                        title={`Pedidos (${0})`}/>        
+                        title={`Pedidos (${0})`}
+                        onClick={handleShowShopCart}/>        
                     
                     <div className="btn-cart-mobile">
                         <ButtonText  
                             type="button"
-                            icon={Receipt}>       
+                            icon={Receipt}
+                            onClick={handleShowShopCart}>       
                         </ButtonText>
                             <span>0</span>  
                     </div>
