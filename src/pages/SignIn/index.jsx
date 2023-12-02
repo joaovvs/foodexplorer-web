@@ -35,13 +35,15 @@ export function SignIn(){
         <Form id="signin" >
             <h2>Faça login</h2>
             <Input 
+                id="email-input"
                 type="email"
                 title="Email" 
                 placeholder="Exemplo: exemplo@exemplo.com.br"
                 onChange={e => setEmail(e.target.value)} 
                 />
             <Input 
-            type="password" 
+                id="password-input"
+                type="password" 
                 title="Senha" 
                 placeholder="No mínimo 6 caracteres"
                 minLength="6"

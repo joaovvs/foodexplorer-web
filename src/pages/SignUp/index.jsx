@@ -49,6 +49,7 @@ export function SignUp(){
         <Form>
             <h2>Crie sua conta</h2>
             <Input 
+                id="user-name-input"
                 type="text"
                 title="Seu nome" 
                 placeholder="Exemplo: Maria da Silva"
@@ -56,13 +57,16 @@ export function SignUp(){
                 required 
             />
             <Input 
+                id="email-input"
                 type="email"
                 title="Email" 
                 placeholder="Exemplo: exemplo@exemplo.com.br"
                 onChange={e => setEmail(e.target.value)}
                 required  
             />
-            <Input type="password" 
+            <Input 
+                id="passowrd-input"
+                type="password" 
                 title="Senha" 
                 placeholder="No mínimo 6 caracteres"
                 minLength="6"
