@@ -3,21 +3,16 @@
 
 Bem-vindo ao README da aplicação Food Exeplorer! Esta é uma aplicação frontend que permite a administração de pratos por um administrador e a visualização/adicionamento de pratos favoritos por usuários comuns.
 
-Conteúdo
-Instalação
-Configuração
-Execução
-Funcionalidades
-Contribuição
-Licença
-Instalação
+
+### Instalação
+
 Para começar, clone o repositório para o seu ambiente local:
 
 ```bash
 git clone https://github.com/joaovvs/foodexplorer-web.git
 cd foodexplorer-web
 ```
-Instale as dependências:
+#### Instale as dependências:
 
 ```bash
 
@@ -25,7 +20,7 @@ npm install
 
 ```
 
-###Configuração
+### Configuração
 A aplicação requer configurações específicas para se conectar à API Food Explorer. Edite o arquivo src/services/api.js e insira as informações necessárias.
 
 ```javascript

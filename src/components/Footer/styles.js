@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
+
 export const Container = styled.div`
     grid-area: footer;
     display: flex;
@@ -45,5 +47,8 @@ export const Container = styled.div`
         }
 
     
+        @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+            padding: 2.4rem 12.3rem;
+        }
 
 `;
