@@ -17,11 +17,13 @@ import { USER_ROLE } from '../../utils/roles';
 import { CaretLeft, Receipt } from "@phosphor-icons/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
+import { Loading } from "../../components/Loading";
 
 export function Details(){
     const { user } = useAuth();
     const [menuIsOpen, setMenuIsOpen] = new useState(false);
     const [food, setFood] = new useState({});
+    const [isLoading, setIsLoading] = new useState(true);
 
     const navigate = useNavigate();
 
@@ -45,6 +47,7 @@ export function Details(){
     useEffect(()=>{
         async function fetchFood(){
             try{
+                setIsLoading(true);
                 const foodSearch = await api.get(`foods/${food_id}`);
                 setFood(foodSearch.data);
                 }catch (error) {
@@ -55,6 +58,8 @@ export function Details(){
                         navigate("/");
                         return;
                     }
+                }finally {
+                    setIsLoading(false);
                 }
         }
         fetchFood();
@@ -79,42 +84,36 @@ export function Details(){
             </nav>
 
             <Main>
-                
-                <img className="food-img" src={foodImageUrl} alt={`Imagem de ${food.name}`} />
+                { isLoading ? <Loading /> : (
+                <><img className="food-img" src={foodImageUrl} alt={`Imagem de ${food.name}`} /><Section>
+                        <div id="food-data">
+                            <h1>{food.name}</h1>
 
-                <Section>
-                    <div id="food-data">
-                        <h1>{food.name}</h1>
+                            <p>{food.description}</p>
 
-                        <p>{food.description}</p>
-
-                        <div className="tag-list">
-                            { food.ingredients && food.ingredients.map((ingredient,index)=> 
-                                (
-                                <Tag 
-                                    key={String(index)}
-                                    title={ingredient}
-                                    />
-                            )
-                            )}
+                            <div className="tag-list">
+                                {food.ingredients && food.ingredients.map((ingredient, index) => (
+                                    <Tag
+                                        key={String(index)}
+                                        title={ingredient} />
+                                )
+                                )}
+                            </div>
                         </div>
-                    </div>
-                { [USER_ROLE.CUSTOMER].includes(user.role) && food.price &&
-                <QuantityPicker 
-                    price={food.price}
-                    title={`incluir`} 
-                    icon={Receipt}/>
-                }
+                        {[USER_ROLE.CUSTOMER].includes(user.role) && food.price &&
+                            <QuantityPicker
+                                price={food.price}
+                                title={`incluir`}
+                                icon={Receipt} />}
 
-                {[USER_ROLE.ADMIN].includes(user.role) &&
-                <Button 
-                    className="btn-edit"
-                    title="Editar prato"
-                    onClick={handleEdit}/>
-                }
-                </Section>
+                        {[USER_ROLE.ADMIN].includes(user.role) &&
+                            <Button
+                                className="btn-edit"
+                                title="Editar prato"
+                                onClick={handleEdit} />}
+                    </Section></>
                 
-  
+            )}
             </Main>
             <Footer/>
         </Container>

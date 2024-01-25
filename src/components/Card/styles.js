@@ -39,6 +39,7 @@ export const Container = styled.div`
         height: 8.8rem;
 
         margin-top: 4.6rem;
+        cursor: pointer;
     }
 
     h4{ 

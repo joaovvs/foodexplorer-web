@@ -55,7 +55,7 @@ export function Card({food, isFavorite,onFavoriteChange, ...rest}){
 
 
 
-        <img className="food-img" src={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage} alt= {`Imagem do prato ${food.name}`}/>
+        <img className="food-img" src={food.image ?`${api.defaults.baseURL}/files/${food.image}` : noImage} alt= {`Imagem do prato ${food.name}`} onClick={handleDetails}/>
         <ButtonText 
             className="btn-food-name"
             type="button"
