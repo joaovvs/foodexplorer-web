@@ -61,11 +61,10 @@ A aplicação estará disponível em http://localhost:5173.
 
 ### URL da Aplicação
 
-    https://food-exeplorer-9a8739.netlify.app/
+   Ambiente de demonstração https://food-exeplorer-9a8739.netlify.app/
 
 ### USERS DEMO
 
 | Usuário   | Role       | Pass          |
 | :---------- | :--------- | :----------- |
-| `joao@gmail.com`      | `admin` | 123456 |
-| `teste@teste.com`      | `customer` | 123456 |
+| `daniela@gmail.com`      | `customer` | 123456 |
