@@ -50,7 +50,16 @@ export function Home(){
                 //search by foodname
                 const response2 = await api.get(`/foods/?ingredients=${""}&name=${search}`);
                 const searchResult= [...response1.data,...response2.data];
-                setFoodList([...response1.data,...response2.data]);
+                //filter results with the same id
+                const ids =  new Set();
+                const filteredResult = searchResult.filter(item => {
+                    if (!ids.has(item.id)){
+                        ids.add(item.id)
+                        return true;
+                    }
+                    return false;
+                })
+                setFoodList(filteredResult);
             }catch(error){
                 if(error.response){
                     alert(error.response.data.message)
