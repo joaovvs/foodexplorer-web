@@ -1,6 +1,6 @@
 # Food Explorer
 
-Bem-vindo ao README da aplicação Food Exeplorer! Esta é uma aplicação frontend que permite a administração de pratos por um administrador e a visualização/adicionamento de pratos favoritos por usuários comuns.
+Bem-vindo ao README da aplicação Food Explorer! Esta é uma aplicação que permite a administração de pratos por um administrador e a visualização/adicionamento de pratos favoritos por usuários comuns.
 
 #### Preview
 
